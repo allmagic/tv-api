@@ -8,25 +8,23 @@
 module.exports = {
 
   attributes: {
-    // // e.g., "Polly"
-    // name: {
-    //   type: 'string'
-    // },
-    //
-    // // e.g., 3.26
-    // wingspan: {
-    //   type: 'float',
-    //   required: true
-    // },
-    //
-    // // e.g., "cm"
+    name: {
+      type: 'string',
+      required: true
+    },
+    phone: {
+      type: 'string',
+      required: true
+    }
+
+    // e.g., "cm"
     // wingspanUnits: {
     //   type: 'string',
     //   enum: ['cm', 'in', 'm', 'mm'],
     //   defaultsTo: 'cm'
     // },
-    //
-    // // e.g., [{...}, {...}, ...]
+
+    // e.g., [{...}, {...}, ...]
     // knownDialects: {
     //   collection: 'Dialect'
     // }

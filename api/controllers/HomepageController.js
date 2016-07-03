@@ -6,10 +6,12 @@
  */
 
 module.exports = {
-  index: (request, response) => {
-    console.log('request', request)
-    return response.view('homepage', {
-      currentDate: (new Date()).toString()
+  index: (req, res) => {
+    let sampleDate = (new Date()).toString();
+
+    return res.view('homepage', {
+      currentDate: sampleDate,
+      testVariable: 'this is test value'
     })
   }
 }

@@ -1,5 +1,8 @@
 var socket = io.sails.connect();
 
-socket.on('incoming', (msg) => {
-  console.log("msg", msg);
+socket.on('incoming', (data) => {
+  console.log("got event with data", data);
 });
+
+
+// alert('day la js')

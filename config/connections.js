@@ -29,9 +29,9 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
   // Open it when dev
-  // localDiskDb: {
-  //   adapter: 'sails-disk'
-  // },
+  localDiskDb: {
+    adapter: 'sails-disk'
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -44,7 +44,7 @@ module.exports.connections = {
   taovang: {
     adapter: 'sails-mysql',
     host: 'vnmagic.net',
-    port: 2307,
+    port: 2308,//dm
     user: 'root', //optional
     password: 'Diablo321', //optional
     database: 'taovang_crm' //optional

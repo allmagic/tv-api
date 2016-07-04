@@ -14,9 +14,44 @@ module.exports = {
     },
     phone: {
       type: 'string',
+      unique: true,
       required: true
+    },
+    customer_group: {
+      type: 'string',
+      required: true
+    },
+    address: {
+      type: 'string'
+    },
+    birthday: {
+      type: 'string'
+    },
+    company: {
+      type: 'string'
+    },
+    email: {
+      type: 'string',
+      unique: true
+    },
+    facebook: {
+      type: 'string',
+      unique: true
+    },
+    zalo: {
+      type: 'string',
+      unique: true
+    },
+    viber: {
+      type: 'string',
+      unique: true
+    },
+    note: {
+      type: 'array'
+    },
+    history: {
+      type: 'array'
     }
-
     // e.g., "cm"
     // wingspanUnits: {
     //   type: 'string',

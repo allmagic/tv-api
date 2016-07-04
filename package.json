@@ -29,8 +29,11 @@
   "scripts": {
     "debug": "node debug index.js",
     "start": "node index.js",
-    "dev": "forever start -w index.js",
-    "stop": "forever stop index.js",
+    "fdev": "forever start -w index.js",
+    "fstop": "forever stop index.js",
+    "dev": "pm2 start --name tv-api --watch --ignore-watch=\".git .tmp node_modules views/layout.ejs .idea\" index.js && pm2 logs",
+    "stop": "pm2 delete index.js",
+    "restart": "pm2 restart index.js",
     "logs": "tail -f /tmp/out.log"
   },
   "main": "app.js",

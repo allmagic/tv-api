@@ -18,8 +18,7 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'bootstrap/css/*.css',
-  'adminlte/css/*.css',
-  'adminlte/css/*/*.css',
+
   // 'adminlte/plugins/*/*.css',
   'styles/**/*.css' // ovewrite by less
 ];
@@ -31,10 +30,10 @@ var jsFilesToInject = [
 
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
-  'adminlte/plugins/jQuery/*.js',
+
   'bootstrap/js/bootstrap.min.js',
   // Dependencies like jQuery, or Angular are brought in here
-  'adminlte/js/app.min.js',
+
   'js/dependencies/**/*.js',
   // 'adminlte/plugins/*/*.js',
   // All of the rest of your client-side js files

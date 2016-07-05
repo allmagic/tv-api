@@ -32,12 +32,17 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  // '/': {
-  //   view: 'homepage'
-  // },
-  '/incoming': 'IncomingController.index',
+  // Thich thi de~ comment
+  // Neu de syntax kieu key value nhu vay thi` xai controller de quan ly no la controller/HomepageController key index
+  '/': 'HomepageController.index',
 
-  '/': 'HomepageController.index'
+  // Neu de syntax kieu key nay thi khong xai controller qua thang~ view luon
+  '/pass': {
+    view: 'pass'
+  },
+  '/incoming': 'IncomingController.index'
+
+
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

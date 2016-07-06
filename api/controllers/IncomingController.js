@@ -49,11 +49,12 @@ module.exports = {
       console.log('we got error msg', error);
     })
 
+    // console.log('sails.sockets', sails.sockets);
     // lay response cb xong write ra json no co rat nhieu function
-    //res.json(200, {"message": "new message blast"});
+    res.json(200, {"message": "new message blast"});
     //res.send(params);
 
-    return res.view('homepage', params);
+    // return res.view('homepage', params);
 
   }
 }

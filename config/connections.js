@@ -41,14 +41,14 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
-  taovang: {
-    adapter: 'sails-mysql',
-    host: 'vnmagic.net',
-    port: 2308,//dm
-    user: 'root', //optional
-    password: 'Diablo321', //optional
-    database: 'taovang_crm' //optional
-  },
+  // taovang: {
+  //   adapter: 'sails-mysql',
+  //   host: 'vnmagic.net',
+  //   port: 2308,//dm
+  //   user: 'root', //optional
+  //   password: 'Diablo321', //optional
+  //   database: 'taovang_crm' //optional
+  // },
 
   /***************************************************************************
   *                                                                          *

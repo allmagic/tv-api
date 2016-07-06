@@ -36,14 +36,25 @@ module.exports = {
       )
     })
 
-    
+
 
     findUserDone.then((users) => {
       console.log('fuck user', users)
       let notifyData = params;
       notifyData.users = users; //add users to notifyData
 
-      // Notify all browser when user found
+      // Notify all browser when user found, cai nay choi blast luon khong theo room
+      // thuong room la session ID, session ID dc generate luc minh set tren page load,
+      // sails cho minh chon storage cua session
+      /// o PHP thong thuong quan ly session o trong file /tmp/php_sess/aasjdkajsdnkasjndkj.txt
+      // nhung o node(sails) thi cach quan ly tot hon, chon duoc he thuong storage nhu redis, memcache...
+      // Gio vo van de, ong co hieu session la gi ko?
+
+       //hiểu sao ko pa, session hoat dong the nao?
+
+      // đó :D
+      // qq
+
       sails.sockets.blast('incoming', notifyData);
     }).catch((error)=> {
       console.log('we got error msg', error);

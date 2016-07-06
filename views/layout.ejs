@@ -30,14 +30,81 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
-  <body class="">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">CRM</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a data-toggle="tab" href="#contact">Danh Bạ</a></li>
+          <li><a data-toggle="tab" href="#agent">Nhân Viên</a></li>
+          <li><a data-toggle="tab" href="#calendar">Lịch Hẹn</a></li>
+          <li><a data-toggle="tab" href="#notes">Ghi Chú</a></li>
+        </ul>
+      </div>
+      <!--Wrapper Content-->
+      <div class="col-sm-9 text-left">
+        <div class="tab-content">
+          <div id="contact" class="tab-pane fade in active">
+            <h3>Danh Bạ Khách Hàng</h3>
+            <%- body %>
+          </div>
+          <div id="agent" class="tab-pane fade">
+            <h3>Danh Sách Nhân Viên</h3>
+            <%- partial ('agent.ejs') %>
+          </div>
+          <div id="calendar" class="tab-pane fade">
+            <h3>Lịch Hẹn Với Khách</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+          </div>
+          <div id="notes" class="tab-pane fade">
+            <h3>Ghi Chú</h3>
+            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          </div>
+        </div>
 
 
-    <%- body %>
+      </div>
+      <!--End Wrapper Content-->
+    </div>
+  </div>
 
+      <!-- Content Wrapper. Contains page content -->
+
+        <!-- Chỗ này là file load như pass.ejs -->
+
+
+      <!-- /.content-wrapper -->
+
+  <footer class="container-fluid text-center">
+    <p>by khanhDepTroaikhoaiTo</p>
+  </footer>
 
     <!--
         Client-side Templates

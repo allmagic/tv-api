@@ -17,9 +17,19 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  models: {
+    connection: 'taovang'
+  },
+  connections: {
+    taovang: {
+      adapter: 'sails-mysql',
+      host: 'vnmagic.net',
+      port: 2308,
+      user: 'root',
+      password: 'Diablo321',
+      database: 'taovang_crm'
+    }
+  }
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *

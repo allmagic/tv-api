@@ -27,7 +27,7 @@
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- đoạn o dây là auto generate từ  nên không cần edit styles -> sytles end -->
     <!--STYLES-->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
@@ -65,21 +65,37 @@
     <div class="row content">
       <div class="col-sm-3 sidenav">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#section1">Home</a></li>
-          <li><a href="#section2">Friends</a></li>
-          <li><a href="#section3">Family</a></li>
-          <li><a href="#section3">Photos</a></li>
+          <li class="active"><a data-toggle="pill" href="#contact">Danh Bạ</a></li>
+          <li><a data-toggle="pill" href="#agent">Nhân Viên</a></li>
+          <li><a data-toggle="pill" href="#calendar">Lịch Hẹn</a></li>
+          <li><a data-toggle="pill" href="#note">Ghi Chú</a></li>
         </ul>
       </div>
       <!--Wrapper Content-->
       <div class="col-sm-9 text-left">
-
-        <%- body %>
+        <div class="tab-content">
+        <div id="contact" class="tab-pane fade in active">
+          <h3>Danh Sách Khách Hàng</h3>
+          <%- body %>
+        </div>
+        <div id="agent" class="tab-pane fade">
+          <h3>Danh Sách Nhân Viên</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="calendar" class="tab-pane fade">
+          <h3>Lịch Hẹn Với Khách</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="note" class="tab-pane fade">
+          <h3>Ghi Chú</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
 
       </div>
       <!--End Wrapper Content-->
     </div>
-  </div>
+
+  </div></div>
 
       <!-- Content Wrapper. Contains page content -->
 
@@ -146,6 +162,7 @@
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/main.js"></script>
     <!--SCRIPTS END-->
   </body>

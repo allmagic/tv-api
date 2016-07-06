@@ -31,7 +31,7 @@ var callback_fn = function(){
   $('#login').submit(function(e) {
     e.preventDefault();
     console.log('submit called');
-    socket.get('/account'); // chỗ này phải là /login mới đúng chứ nhễ ?
+    socket.get('/account'); // chỗ này phải là /login mới đúng chứ nhễ ?// account moi co model de lam chu pa
   })
 }
 

@@ -11,20 +11,14 @@
  */
 
 module.exports = {
+
   /***************************************************************************
    * Set the default database connection for models in the development       *
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  //models là tên file config muốn overwrite
   models: {
     connection: 'localDiskDb'
-  },
-  // Connections info
-  connections: {
-
   }
 
 };
-// CMD + x la xoa dong
-// CMD + / la comment dong

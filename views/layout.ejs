@@ -27,86 +27,17 @@
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- đoạn o dây là auto generate từ  nên không cần edit styles -> sytles end -->
+
     <!--STYLES-->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">CRM</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid text-center">
-    <div class="row content">
-      <div class="col-sm-3 sidenav">
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a data-toggle="pill" href="#contact">Danh Bạ</a></li>
-          <li><a data-toggle="pill" href="#agent">Nhân Viên</a></li>
-          <li><a data-toggle="pill" href="#calendar">Lịch Hẹn</a></li>
-          <li><a data-toggle="pill" href="#note">Ghi Chú</a></li>
-        </ul>
-      </div>
-      <!--Wrapper Content-->
-      <div class="col-sm-9 text-left">
-        <div class="tab-content">
-        <div id="contact" class="tab-pane fade in active">
-          <h3>Danh Sách Khách Hàng</h3>
-          <%- body %>
-        </div>
-        <div id="agent" class="tab-pane fade">
-          <h3>Danh Sách Nhân Viên</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div id="calendar" class="tab-pane fade">
-          <h3>Lịch Hẹn Với Khách</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div id="note" class="tab-pane fade">
-          <h3>Ghi Chú</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-
-      </div>
-      <!--End Wrapper Content-->
-    </div>
-
-  </div></div>
-
-      <!-- Content Wrapper. Contains page content -->
-
-        <!-- Chỗ này là file load như pass.ejs -->
+  <body class="">
 
 
-      <!-- /.content-wrapper -->
+    <%- body %>
 
-  <footer class="container-fluid text-center">
-    <p>by khanhDepTroaikhoaiTo using Bút sờ tráp</p>
-  </footer>
 
     <!--
         Client-side Templates
@@ -155,14 +86,12 @@
           + Import scripts from other directories
           + Use a different preprocessor, like TypeScript
 
-      Đoạn này cũng vậy đọc cmt ở trên bằng english nó cũng nói
     -->
-
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
     <script src="/js/main.js"></script>
     <!--SCRIPTS END-->
   </body>

@@ -18,19 +18,19 @@ module.exports = {
    ***************************************************************************/
 
   models: {
-    connection: 'taovang'
+    connection: 'taovangSQL'
   },
+
   connections: {
-    taovang: {
+    taovangSQL: {
       adapter: 'sails-mysql',
       host: 'vnmagic.net',
-      port: 2308,
-      user: 'root',
-      password: 'Diablo321',
-      database: 'taovang_crm'
-    }
+      port: 2307,
+      user: 'root', //optional
+      password: 'Diablo321', //optional
+      database: 'taovang_crm' //optional
+    },
   }
-
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/

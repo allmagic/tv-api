@@ -19,7 +19,8 @@ module.exports = {
 
   models: {
     connection: 'localDiskDb',
-    migrate: 'alter'//drop no xoa het:s
+    migrate: 'alter'//drop no xoa het:s cho no sach
   }
 
 };
+// =]]

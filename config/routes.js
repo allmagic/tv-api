@@ -36,13 +36,14 @@ module.exports.routes = {
   // Neu de syntax kieu key value nhu vay thi` xai controller de quan ly no la controller/HomepageController key index
   '/': 'HomepageController.index',
   '/home': 'HomepageController.index',
+  '/about': 'AboutController.index',
 
   // Neu de syntax kieu key nay thi khong xai controller qua thang~ view luon
   '/pass': {
     view: 'pass'
   },
   '/incoming': 'IncomingController.index',
-  '/socket-test': 'SocketTestController.index',
+  '/socket': 'SocketController.index',
   '/login': 'LoginController.index',
 
 

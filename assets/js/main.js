@@ -1,43 +1,72 @@
 // minh mo 1 socket connect voi gia tri la socket roi`
 
-var socket = io.sails.connect();
-socket.on('incoming', (data) => {
-  console.log("got event with data", data);
-});
 
-socket.on('user/created', (data) => {
-  console.log("got event user created with data", data);
-});
+var socket;
 
-// concept cua jquery la write less do more
-// may cai javascript muon doc duoc 1 cai DOM thi no fai load sau cung kieu vay ne
-// nhung voi Jquery
-// 1. minh co de de o dau cung dc nho` callback function cua no
-// 2. javascript thuan` muon get 1 dom thi rat kho khan, no chia ra ID, Name, TAG ...
-var callback_fn = function(){
+var callback_fn = function () {
+
+  socket = io.sails.connect();
+  // test auth
+  socket.get('/socket');
+
+
+  socket.on('incoming', (data) => {
+    console.log("got event with data", data);
+  });
+
+  socket.on('user/created', (data) => {
+    console.log("got event user created with data", data);
+  });
+
+  socket.on('home/loaded', (data) => {
+    console.log("got event home/loaded with data", data);
+  });
+
+  socket.on('user/logged', (data) => {
+    console.log("got event user login with data", data);
+  });
+  socket.on('user/authenticated', (data) => {
+    console.log("got event user/authenticated", data);
+  });
+
+  // gio lam gi nua , tam ngung duoc ko , tui tre gio ve roi pa , gang ngoi coi ong lam de hieu :D
+  // gio security done de tui check env
+
+  // hieu gi ko ? hieu cai zu join room cua ong roi :)) vl tui cung~ eo hieu :D, no chi cho join bang ws nen fai goi ws
+  // thang l` viet cai fw sida
+  // ong lam tui boi roi vl :D
+  // noi chung gio secure roi :D
+
+// gio muon lam gi ta
+// troll vai quen me // noi sao ta // ...gui
+
+// goi thoi co API roi blast all la xong rui vi co authen roi
+
+
   var path = window.location.pathname;
   path = path.replace(/\/$/, "");
   path = decodeURIComponent(path);
 
+
+  // Script to add active class on menu
   $(".nav li a").each(function () {
     var href = $(this).attr('href');
-    if(path.substring((path.lastIndexOf('/')+1),path.lenght) === href) {
+    if (path.substring((path.lastIndexOf('/') + 1), path.lenght) === href) {
       $(this).closest('li').addClass('active');
     } else {
       $(this).closest('li').removeClass();
     }
   });
 
-  $('#login').submit(function(e) {
+
+  $('#login').submit(function (e) {
     e.preventDefault();
-    console.log('submit called');
-    socket.get('/account'); // chỗ này phải là /login mới đúng chứ nhễ ?// account moi co model de lam chu pa
+    var data = $('#login').serialize();
+    socket.get('/account/login?' + data);
   })
 }
 
-// tuc la khi nay jQuery co 1 ham` de~ doc DOM ready
-
-$(callback_fn); // syntax nay` la` viet gon cua cai document ready do
+$(callback_fn);
 
 
 

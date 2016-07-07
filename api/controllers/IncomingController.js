@@ -41,6 +41,9 @@ module.exports = {
     findUserDone.then((users) => {
       console.log('fuck user', users)
       let notifyData = params;
+
+      // remove token
+      delete notifyData.token;
       notifyData.users = users; //add users to notifyData
 
       // Notify all browser when user found, cai nay choi blast luon khong theo room
@@ -55,14 +58,15 @@ module.exports = {
       // đó :D
       // qq
 
-      sails.sockets.blast('incoming', notifyData);
+      sails.sockets.broadcast('logged','incoming', notifyData);// cho het nguoi trong room logged
+
     }).catch((error)=> {
       console.log('we got error msg', error);
     })
 
     // console.log('sails.sockets', sails.sockets);
     // lay response cb xong write ra json no co rat nhieu function
-    res.json(200, {"message": "new message blast"});
+    res.json(200, {"message": params});
     //res.send(params);
 
     // return res.view('homepage', params);

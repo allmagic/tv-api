@@ -20,7 +20,7 @@ module.exports = {
 
     var params = req.allParams(); //allParams la fn buildin
 
-    console.log('params', params);
+    // console.log('params', params);
 
     if (Object.keys(params).length == 0) // Check params > 0
       return res.json(404, {"error": "please provide one or more params"});
@@ -41,11 +41,12 @@ module.exports = {
     findUserDone.then((users) => {
       console.log('fuck user', users)
       let notifyData = params;
-
       // remove token
       delete notifyData.token;
+
       notifyData.users = users; //add users to notifyData
 
+      console.log('notifyData', notifyData)
       sails.sockets.broadcast('logged','incoming', notifyData);// cho het nguoi trong room logged
 
     }).catch((error)=> {

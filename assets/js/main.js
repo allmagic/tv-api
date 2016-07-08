@@ -1,4 +1,5 @@
 var socket;
+var path = window.location.pathname;
 
 $(function () {
 
@@ -23,15 +24,19 @@ $(function () {
   //   console.log("got event home/loaded with data", data);
   // });
 
-  var path = window.location.pathname;
+
   path = path.replace(/\/$/, "");
   path = decodeURIComponent(path);
 
-
   // Script to add active class on menu
   $(".nav li a").each(function () {
-    var href = $(this).attr('href');
-    if (path.substring((path.lastIndexOf('/') + 1), path.lenght) === href) {
+    var href = $(this).attr('href').trim();
+    var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
+    currentURI = currentURI.replace(/^\//, "");
+    href = href.replace(/^\//, "");
+    // console.log('currentURI', currentURI);
+    // console.log('href', href);
+    if (currentURI === href) {
       $(this).closest('li').addClass('active');
     } else {
       $(this).closest('li').removeClass();

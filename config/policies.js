@@ -30,7 +30,10 @@ module.exports.policies = {
 
   '*': 'sessionAuth', //tat ca cac controller pog deu phai qua sessilonAuth - ong lam xong tui moi biet duong ma hieu
   //overwrite logincontroller pass policy rule
-  'LoginController': true, //rieng Login thi khong can qua sessionauth vi neu qua sessionauth thi no lai redir qua login
+  'LoginController': {
+    '*': true,
+    'index': 'notSessionAuth',
+  }, //rieng Login thi khong can qua sessionauth vi neu qua sessionauth thi no lai redir qua login
 
   //overwrite account de nta login
   // ma` gio cai nay cung chan luon chi rieng cai action login la dc pass
@@ -40,6 +43,7 @@ module.exports.policies = {
   },
 
   'IncomingController' : 'tokenAuth',
+  'UserController' : 'tokenAuth',
 
   /***************************************************************************
    *                                                                          *

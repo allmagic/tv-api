@@ -18,7 +18,7 @@ module.exports = {
 
       sails.sockets.join(req, 'logged'); //choi them cai nay cho secure
       sails.sockets.join(req, session_id);
-      sails.sockets.broadcast(session_id, 'user/logged', { message: "admin is login", all_session_data: req.session});
+      sails.sockets.broadcast(session_id, 'user/login-success', { message: "admin is login", all_session_data: req.session});
 
 
       delete result.password;

@@ -26,7 +26,7 @@ module.exports.policies = {
    *                                                                          *
    ********************************************************************* ******/
 
-  // '*': true,
+
 
   '*': 'sessionAuth', //tat ca cac controller pog deu phai qua sessilonAuth - ong lam xong tui moi biet duong ma hieu
   //overwrite logincontroller pass policy rule
@@ -45,6 +45,8 @@ module.exports.policies = {
   'IncomingController' : 'tokenAuth',
   'UserController' : 'tokenAuth',
 
+  // Enable all when dev
+  '*': true,
   /***************************************************************************
    *                                                                          *
    * Here's an example of mapping some policies to run before a controller    *

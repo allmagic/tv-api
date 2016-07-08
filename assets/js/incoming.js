@@ -24,10 +24,10 @@ $(function () {
     // }
   }
 
-  socket.on('incoming', (data) => {
+  socket.on('incoming', function (data) {
     resetModal();
 
-    var hideAfter = 10; //10secs
+    var hideAfter = 200; //10secs
     clearTimeout(hideModal);
     hideModal = setTimeout(function () {
       $('#incoming-modal').modal('hide');

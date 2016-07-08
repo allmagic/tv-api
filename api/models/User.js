@@ -19,7 +19,7 @@ module.exports = {
     },
     customer_group: {
       type: 'string',
-      required: true
+      // required: true
     },
     address: {
       type: 'string'
@@ -49,9 +49,12 @@ module.exports = {
     note: {
       type: 'array'
     },
-    history: {
-      type: 'array'
-    }
+
+    // Add a reference to call
+    calls: {
+      collection: 'call',
+      via: 'owner'
+    },
     // e.g., "cm"
     // wingspanUnits: {
     //   type: 'string',

@@ -7,11 +7,11 @@ $(function () {
   // test auth
   socket.get('/socket');
 
-  socket.on('user/authenticated', (data) => {
+  socket.on('user/authenticated', function (data) {
     console.log("got event user/authenticated", data);
   });
 
-  socket.on('user/login-success', (data) => {
+  socket.on('user/login-success', function(data) {
     window.location = '/home';
     console.log("got event user login with data", data);
   });

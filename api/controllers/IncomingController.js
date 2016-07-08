@@ -39,6 +39,13 @@ module.exports = {
 
 
     findUserDone.then((users) => {
+
+      if(typeof users == 'undefined'){ //store new user to db
+        User.create({phone: params.sdtkh}).exec((err, user) => {
+          console.log('new user created', user);
+        })
+      }
+
       console.log('fuck user', users)
       let notifyData = params;
       // remove token

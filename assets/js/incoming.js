@@ -2,16 +2,13 @@ var hideModal;
 $(function () {
 
   function resetModal() {
+    $('#incoming-modal #user-avatar').attr('src', 'http://placehold.it/380x500');
     var noInfo = 'Chưa có dữ liệu';
     //gio simple tui reset ve chua co du lieu nhe
 
     // tat ca nhung tag co userdata deu dc reset ve chua co du lieu
     $('#incoming-modal [userdata]').each(function (index, element) {
       $(element).text(noInfo);
-    })
-    // fix - reset to no img
-    $('#incoming-modal #user-avatar').each(function (index, element) {
-      $(element).attr('src','noimg.jpg');
     })
 
     // moi lan co gi fai vo day reset

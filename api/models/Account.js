@@ -27,23 +27,18 @@ module.exports = {
   login: (email, password) => {
     // viet tat cua es6 neu key va value variable trong object giong ten nhau {username, password}
     return new Promise((resolve, reject) => {
-      // khong biet no co lam before Query ko
-      // ong xai email ha ???? moi cham con:D
-      // Lon roi :D thang nay 2ways, khong giong md5
-      // password = hash;
-
       password = md5(password);
-      console.log('{email, password}', {email, password});
-
-      Account.find({email, password}).exec(function (err, res) {
-        console.log('res', res);
+      sails.log('login Account find {email, password}', {email, password});
+      Account.findOne({email, password}).exec(function (err, res) {
+        sails.log('login res', res);
         if (err)
           reject(err);
 
-        if (res.length == 0)
+        if (typeof res == 'undefined'){
           reject("Login failed");
+        }
 
-        resolve(res[0]);
+        resolve(res);
       })
 
 

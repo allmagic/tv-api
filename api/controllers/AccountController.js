@@ -7,8 +7,10 @@
 
 module.exports = {
 	login: (req, res) => {
-    let params = req.allParams();
+    //Support socket only
+    if (!req.isSocket) {return res.badRequest();}
 
+    let params = req.allParams();
     Account.login(params.email, params.password).then((result) => {
       req.session.user_id = result.id; //store id vao sess user_id
       req.session.user = result; //store het user data vao object user trong session
@@ -19,7 +21,6 @@ module.exports = {
       sails.sockets.join(req, 'logged'); //choi them cai nay cho secure
       sails.sockets.join(req, session_id);
       sails.sockets.broadcast(session_id, 'user/login-success', { message: "admin is login", all_session_data: req.session});
-
 
       delete result.password;
       res.json(200, {"result": result});

@@ -50,6 +50,7 @@ $(function () {
 
 
   $('#login').submit(function (e) {
+    console.log('form submit called');
     e.preventDefault();
     var data = $('#login').serialize();
     socket.get('/account/login?' + data);

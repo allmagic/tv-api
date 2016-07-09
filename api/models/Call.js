@@ -8,7 +8,6 @@
 module.exports = {
 
   attributes: {
-    //con tui nó ngủ mớ :D , mới dậy khóc um sùm
     content: {
       type: 'string',
       required: true
@@ -16,7 +15,8 @@ module.exports = {
     // Add a reference to User
     // owner la user id
     owner: {
-      model: 'user'
+      model: 'user',
+      required: true
     }
   }
 };

@@ -9,6 +9,10 @@ $(function () {
     $('#incoming-modal [userdata]').each(function (index, element) {
       $(element).text(noInfo);
     })
+    // fix - reset to no img
+    $('#incoming-modal #user-avatar').each(function (index, element) {
+      $(element).attr('src','noimg.jpg');
+    })
 
     // moi lan co gi fai vo day reset
     //overwrite reset
@@ -41,16 +45,12 @@ $(function () {
       for (userKey in users) {
         $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
         $('#incoming-modal #user-avatar').attr('src', users.avatar);
-
       }
     } else {
       // show data by params
       $('#incoming-modal .phone-number').text(data.sdtkh)
     }
-
     var modalOpt = {};
     $('#incoming-modal').modal(modalOpt);
   });
 })
-
-//git lên đi , để tối về còn lấy về

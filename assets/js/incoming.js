@@ -2,7 +2,7 @@ var hideModal;
 $(function () {
 
   function resetModal() {
-    $('#incoming-modal #user-avatar').attr('src', 'http://placehold.it/380x500');
+    $('#incoming-modal #user-avatar').attr('src', 'http://placehold.it/380x500'); // 2
     var noInfo = 'Chưa có dữ liệu';
     //gio simple tui reset ve chua co du lieu nhe
 
@@ -11,18 +11,6 @@ $(function () {
       $(element).text(noInfo);
     })
 
-    // moi lan co gi fai vo day reset
-    //overwrite reset
-    // var users = {
-    //   phone: "",
-    //   name: "",
-    //
-    // };
-
-    // for (userKey in users) {
-    //   var text = (users[userKey] == "") ? noInfo : users[userKey]; // cái chỗ này là sao zậy , giải thích tui zới :D
-    //   $('#incoming-modal [userdata=' + userKey + ']').text(text);
-    // }
   }
 
   socket.on('incoming', function (data) {
@@ -41,7 +29,7 @@ $(function () {
       //loop all user key and set text
       for (userKey in users) {
         $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
-        $('#incoming-modal #user-avatar').attr('src', users.avatar);
+        $('#incoming-modal #user-avatar').attr('src', users.avatar); // 1
       }
     } else {
       // show data by params
@@ -50,5 +38,16 @@ $(function () {
     var modalOpt = {};
     $('#incoming-modal').modal(modalOpt);
   });
+
+  $('.save-call-history').click(function(event){
+    console.log('save call click');
+    var parent = $(this).parents('#incoming-modal');
+    //Show note div, tu lam tiep dc k? dc e :D , khuc nay de ma thay ong tim kiem met vl -_-
+    //lag wa de do cai nay tui xu cho
+    // xu di tui nhin` , uh de ti moi xu duoc :D , ong nhin tui xu ko duoc T_T
+    console.log(parent);
+
+    parent.find('.notes').show();
+  })
 })
 

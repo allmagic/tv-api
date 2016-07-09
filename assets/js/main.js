@@ -15,6 +15,11 @@ $(function () {
     window.location = '/home';
     console.log("got event user login with data", data);
   });
+
+  // Get socket to join defined rooms after reconnect done
+  socket.on('reconnect', function() {
+    socket.get('/socket');
+  });
   //
   // socket.on('user/created', (data) => {
   //   console.log("got event user created with data", data);

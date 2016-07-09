@@ -40,6 +40,8 @@ $(function () {
       //loop all user key and set text
       for (userKey in users) {
         $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
+        $('#incoming-modal #user-avatar').attr('src', users.avatar);
+
       }
     } else {
       // show data by params

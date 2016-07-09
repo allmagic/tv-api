@@ -12,6 +12,9 @@ module.exports = {
       type: 'string',
       required: true
     },
+    avatar: {
+      type: 'url'
+    },
     phone: {
       type: 'string',
       unique: true,

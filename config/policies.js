@@ -28,25 +28,19 @@ module.exports.policies = {
 
 
 
-  '*': 'sessionAuth', //tat ca cac controller pog deu phai qua sessilonAuth - ong lam xong tui moi biet duong ma hieu
-  //overwrite logincontroller pass policy rule
+  // '*': 'sessionAuth',
   'LoginController': {
     '*': true,
     'index': 'notSessionAuth',
-  }, //rieng Login thi khong can qua sessionauth vi neu qua sessionauth thi no lai redir qua login
-
-  //overwrite account de nta login
-  // ma` gio cai nay cung chan luon chi rieng cai action login la dc pass
+  },
   'AccountController': {
-    '*': true,//de test tao account cho de~
-    'login': true,//tui danh dau ',' o duoi object de de~ duplicate, o node thi ok, con o json bth no se bao failed
+    '*': true,
+    'login': true,
   },
 
-  'IncomingController' : 'tokenAuth',
-  'UserController' : 'tokenAuth',
+  // 'IncomingController' : 'tokenAuth',
+  // 'UserController' : 'tokenAuth',
 
-  // Enable all when dev
-  '*': true,
   /***************************************************************************
    *                                                                          *
    * Here's an example of mapping some policies to run before a controller    *

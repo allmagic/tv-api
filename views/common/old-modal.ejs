@@ -1,0 +1,51 @@
+<div class="col-xs-12" style="display: none">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+
+                <img src="http://placehold.it/380x500" alt="" class="user-avatar img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <h4 class="user-name" userdata="name">Chưa có dữ liệu</h4>
+                <h4 class="phone-number" userdata="phone">Số khách</h4>
+
+                <i class="glyphicon glyphicon-map-marker"></i> <span userdata="address">Chưa có dữ liệu</span>
+                <br />
+                <i class="glyphicon glyphicon-envelope"></i> <span userdata="email">Chưa có dữ liệu</span>
+                <br />
+                <i class="glyphicon glyphicon-gift" ></i> <span userdata="birthday">Chưa có dữ liệu</span>
+
+
+                <!-- Split button -->
+                <div style="row">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary save-call-history">
+                            Save Call History</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span><span class="sr-only">Social</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                            <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Github</a></li>
+                        </ul>
+                    </div>
+
+                    <form class="call-history" style="display: none">
+                        <div class="form-group" >
+                            <label for="comment"><%=_("Notes")%>:</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+
+
+                        </div>
+                        <button type="submit" class="btn btn-info">Save</button>
+                    </form>
+                </div>
+                <!-- Minh khong can lam nut save user vi user minh tu save uh-->
+                <!-- nhung con cai layout save name xxxx -->
+            </div>
+        </div>
+    </div>
+</div>

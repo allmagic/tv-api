@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  autoPK: false,
   attributes: {
     name: {
       type: 'string',
@@ -18,7 +18,8 @@ module.exports = {
     phone: {
       type: 'string',
       unique: true,
-      required: true
+      required: true,
+      primaryKey: true
     },
     customer_group: {
       type: 'string',
@@ -50,7 +51,7 @@ module.exports = {
       unique: true
     },
     note: {
-      type: 'array'
+      type: 'string'
     },
 
     // Add a reference to call
@@ -69,6 +70,24 @@ module.exports = {
     // knownDialects: {
     //   collection: 'Dialect'
     // }
-  }
+  },
+  getUserById: (user_id) => {
+    return new Promise((resolve, reject) => {
+      User.findOne( { id: user_id } ).exec((err, user) => {
+        if(err)
+          reject(err)
+        resolve(user)
+      })
+    })
+  },
+  getUserByPhone: (phone) => {
+    return new Promise((resolve, reject) => {
+      User.findOne( { phone } ).exec((err, user) => {
+        if(err)
+          reject(err)
+        resolve(user)
+      })
+    })
+  },
 };
 

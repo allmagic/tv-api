@@ -2,7 +2,7 @@ var hideModal;
 $(function () {
 
   function resetModal() {
-    $('#incoming-modal #user-avatar').attr('src', 'http://placehold.it/380x500'); // 2
+    $('#incoming-modal .user-avatar').attr('src', 'http://placehold.it/380x500'); // 2
     var noInfo = 'Chưa có dữ liệu';
     //gio simple tui reset ve chua co du lieu nhe
 
@@ -16,7 +16,7 @@ $(function () {
   socket.on('incoming', function (data) {
     resetModal();
 
-    var hideAfter = 200; //10secs
+    var hideAfter = 500; //secs
     clearTimeout(hideModal);
     hideModal = setTimeout(function () {
       $('#incoming-modal').modal('hide');
@@ -29,7 +29,7 @@ $(function () {
       //loop all user key and set text
       for (userKey in users) {
         $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
-        $('#incoming-modal #user-avatar').attr('src', users.avatar); // 1
+        $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
       }
     } else {
       // show data by params
@@ -45,9 +45,10 @@ $(function () {
     //Show note div, tu lam tiep dc k? dc e :D , khuc nay de ma thay ong tim kiem met vl -_-
     //lag wa de do cai nay tui xu cho
     // xu di tui nhin` , uh de ti moi xu duoc :D , ong nhin tui xu ko duoc T_T
-    console.log(parent);
-
-    parent.find('.notes').show();
+    // console.log(parent);
+    $(this).toggleClass('disabled');
+    parent.find('form.call-history').toggle();
+    parent.find('form.call-history textarea').focus();
   })
 })
 

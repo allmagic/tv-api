@@ -10,7 +10,7 @@
 
 // vi du await cua es7
 // async function concurrent () {
-//   console.log('run conn');
+//   sails.log('run conn');
 //   let p1 = new Promise((resolve, reject) => {
 //     resolve("ahihi");
 //   })
@@ -22,11 +22,10 @@
 //   let [r2] = await Promise.all([p2]);
 //
 //   // wait de cho` va lay dc return cua 1 promise
-//   console.log('r1', r1);
-//   console.log('r2', r2);
+//   sails.log('r1', r1);
+//   sails.log('r2', r2);
 // }
 
-//run thu
 // concurrent();
 
 module.exports = {
@@ -54,7 +53,7 @@ module.exports = {
         let createUserDone = new Promise((resolve, reject) => {
           User.create({phone: params.sdtkh}).exec((err, user) => {
             if (err) {
-              console.log('err', err);
+              sails.log('err', err);
               reject(err);
             }
 

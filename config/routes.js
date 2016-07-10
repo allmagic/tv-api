@@ -45,8 +45,7 @@ module.exports.routes = {
   '/incoming': 'IncomingController.index',
   '/socket': 'SocketController.index',
   '/login': 'LoginController.index',
-  '/profile/:user_id': 'UserController.profile',
-  '/phone/:phone': 'UserController.phone',
+  '/profile/:phone': 'UserController.profile',
 
 
   /***************************************************************************

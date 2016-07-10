@@ -26,11 +26,17 @@ $(function () {
     // check user existed in db - show db info
     if (typeof data.users != 'undefined') {
       var users = data.users;
+      console.log('users', users);
       //loop all user key and set text
       for (userKey in users) {
         $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
-        $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
       }
+      $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
+      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone); // 1
+      
+      //phone se bo~
+      // vl troll vai me lag nhin cuc lam
+
     } else {
       // show data by params
       $('#incoming-modal .phone-number').text(data.sdtkh)

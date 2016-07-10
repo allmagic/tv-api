@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "babel-preset-es2017": "^1.4.0",
     "bcrypt": "^0.8.7",
     "md5": "^2.1.0",
     "passport": "~0.2.1",

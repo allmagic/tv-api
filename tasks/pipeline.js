@@ -29,6 +29,7 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
   'plugins/jQuery/*.js',
   'bootstrap/js/bootstrap.min.js',
+  //ong de trong folder do la no load ok roi
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
   // All of the rest of your client-side js files

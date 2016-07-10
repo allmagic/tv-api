@@ -3,6 +3,32 @@ var path = window.location.pathname;
 
 $(function () {
 
+
+  $('#notes').editable({
+    mode: 'popup', //'popup'
+    type: 'textarea',
+    url: '/user/0989333900',
+    pk: '',//sao de xoa cai pk khoi param day ta T_T , pk de lam gi zay, no la cai qq gi za
+    // no dung de goi qua backend update ma gio minh co api san roi, nen eo xai PK param dc
+    params: function(params) {
+      params.notes = params['value'];
+
+      delete params['pk'];
+      delete params['name'];
+      delete params['value'];
+
+      return params;
+    },
+    title: 'Vui long dien ghi chu',
+    ajaxOptions: {
+      type: 'put'
+    }
+  });
+
+//sua thanh inline o cho mô de coi docs
+
+
+
   socket = io.sails.connect();
   // test auth
   socket.get('/socket');
@@ -55,5 +81,6 @@ $(function () {
     var data = $('#login').serialize();
     socket.get('/account/login?' + data);
   })
+
 });
 

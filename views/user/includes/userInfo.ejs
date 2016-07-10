@@ -1,9 +1,29 @@
 
-<div class="fb-profile">
-    <div align="left" class="fb-image-lg"> </div>
-    <img align="left" class="fb-image-profile thumbnail" src="<%= user.avatar%>"/>
-    <div class="fb-profile-text">
-        <h1><%= user.name%></h1>
-        <p><%= user.note%></p>
+<!--<div class="fb-profile">-->
+    <!--<div align="left" class="fb-image-lg"> </div>-->
+    <!--<img align="left" class="fb-image-profile thumbnail" src="<%= user.avatar%>"/>-->
+    <!--<div class="fb-profile-text">-->
+        <!--<h1><%= user.name%></h1>-->
+        <!--<p><%= user.note%></p>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="col-sm-4 sidenav text-center">
+    <img src="<%= user.avatar%>" class="img-circle img-thumbnail" alt="Cinque Terre" width="200" height="200">
+    <h1><%= user.name%></h1>
+  <ul class="list-group">
+    <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span><%= user.phone%></li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span><%= user.address%></li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-gift pull-left"></span><%= user.birthday%></li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span><%= user.email%></li>
+  </ul>
+
+  <div class="form-group form-notes">
+    <div>
+      <label for="notes">Ghi Chú:</label>
     </div>
+    <pre id="notes"><%= user.notes %></pre>
+    <!--//giờ mới biết div có href :(-->
+    <!--<textarea class="form-control" rows="5" id="comment"></textarea>-->
+  </div>
 </div>

@@ -29,10 +29,10 @@ module.exports = {
       model: 'user',
       required: true
     },
-    beforeCreate: function (attrs, cb) {
-      attrs.date = md5(attrs.password);
-      return cb();
-    },
+    // beforeCreate: function (attrs, cb) {
+    //   attrs.date = md5(attrs.password);
+    //   return cb();
+    // },
   }
 };
 

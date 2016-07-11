@@ -2,6 +2,7 @@ var socket;
 var path = window.location.pathname;
 var callTable;
 var user_phone;
+
 $(function() {
   user_phone = $('#user-phone').text();
 
@@ -19,11 +20,9 @@ $(function() {
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},] // phu hop voi so collums tren html
   });
 
-
   $('#notes').editable({
     mode: 'popup', //'popup'
-    type: 'textarea', url: '/user/' + user_phone, pk: '',//sao de xoa cai pk khoi param day ta T_T , pk de lam gi zay, no la cai qq gi za
-    // no dung de goi qua backend update ma gio minh co api san roi, nen eo xai PK param dc
+    type: 'textarea', url: '/user/' + user_phone, pk: '',
     params: function(params) {
       params.notes = params['value'];
 

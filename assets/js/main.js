@@ -4,10 +4,11 @@ var path = window.location.pathname;
 $(function () {
 
 
+  var user_phone = $('#user-phone').text();
   $('#notes').editable({
     mode: 'popup', //'popup'
     type: 'textarea',
-    url: '/user/0989333900',
+    url: '/user/' + user_phone,
     pk: '',//sao de xoa cai pk khoi param day ta T_T , pk de lam gi zay, no la cai qq gi za
     // no dung de goi qua backend update ma gio minh co api san roi, nen eo xai PK param dc
     params: function(params) {
@@ -19,7 +20,7 @@ $(function () {
 
       return params;
     },
-    title: 'Vui long dien ghi chu',
+    title: 'Nhập ghi chú',
     ajaxOptions: {
       type: 'put'
     }
@@ -82,5 +83,7 @@ $(function () {
     socket.get('/account/login?' + data);
   })
 
+  // Enable bootstrap tooltips
+  $('[data-toggle="tooltip"]').tooltip();
 });
 

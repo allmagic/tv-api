@@ -6,18 +6,33 @@
  */
 
 module.exports = {
-
   attributes: {
     content: {
       type: 'string',
       required: true
     },
+    staffNo: {
+      type: 'string',
+      required: true
+    },
+    callID: {
+      type: 'string',
+      required: true
+    },
+    timestamp: {
+      type: 'datetime'
+    },
+
     // Add a reference to User
     // owner la user id
     owner: {
       model: 'user',
       required: true
-    }
+    },
+    beforeCreate: function (attrs, cb) {
+      attrs.date = md5(attrs.password);
+      return cb();
+    },
   }
 };
 

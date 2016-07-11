@@ -11,6 +11,8 @@
 <div class="col-sm-4 sidenav text-center">
     <img src="<%= user.avatar%>" class="img-circle img-thumbnail" alt="Cinque Terre" width="200" height="200">
     <h1><%= user.name%></h1>
+
+    <span id="user-phone" class="hidden"><%= user.phone%></span>
   <ul class="list-group">
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span><%= user.phone%></li>
     <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span><%= user.address%></li>
@@ -18,7 +20,7 @@
     <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span><%= user.email%></li>
   </ul>
 
-  <div class="form-group form-notes">
+  <div class="form-group form-notes"   data-toggle="tooltip" data-placement="right" title="Bấm để thêm/sửa ghi chú">
     <div>
       <label for="notes">Ghi Chú:</label>
     </div>

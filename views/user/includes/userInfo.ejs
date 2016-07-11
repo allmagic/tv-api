@@ -1,18 +1,8 @@
 
-<!--<div class="fb-profile">-->
-    <!--<div align="left" class="fb-image-lg"> </div>-->
-    <!--<img align="left" class="fb-image-profile thumbnail" src="<%= user.avatar%>"/>-->
-    <!--<div class="fb-profile-text">-->
-        <!--<h1><%= user.name%></h1>-->
-        <!--<p><%= user.note%></p>-->
-    <!--</div>-->
-<!--</div>-->
-
 <div class="col-sm-4 sidenav text-center">
     <img src="<%= user.avatar%>" class="img-circle img-thumbnail" alt="Cinque Terre" width="200" height="200">
-    <h1><%= user.name%></h1>
-
-    <span id="user-phone" class="hidden"><%= user.phone%></span>
+  <h1 class="text-danger"><%= user.name%></h1>
+  <h5><span class="label label-danger">Khách Hàng Thân Thiết</span></h5>
   <ul class="list-group">
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span><%= user.phone%></li>
     <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span><%= user.address%></li>
@@ -20,12 +10,12 @@
     <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span><%= user.email%></li>
   </ul>
 
-  <div class="form-group form-notes"   data-toggle="tooltip" data-placement="right" title="Bấm để thêm/sửa ghi chú">
-    <div>
-      <label for="notes">Ghi Chú:</label>
-    </div>
-    <pre id="notes"><%= user.notes %></pre>
-    <!--//giờ mới biết div có href :(-->
-    <!--<textarea class="form-control" rows="5" id="comment"></textarea>-->
+
+  <div class="panel panel-warning" >
+  <div class="panel-heading"><span class="glyphicon glyphicon-list-alt pull-left"></span>Ghi Chú</div>
+  <div class="panel-body"    data-toggle="tooltip" data-placement="right" title="Bấm để thêm/sửa ghi chú">
+    <p id="notes" class="pull-left"><%= user.notes %></p>
   </div>
+  </div>
+
 </div>

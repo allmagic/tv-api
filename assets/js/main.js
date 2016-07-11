@@ -1,15 +1,28 @@
 var socket;
 var path = window.location.pathname;
+var callTable;
+var user_phone;
+$(function() {
+  user_phone = $('#user-phone').text();
 
-$(function () {
+  callTable = $('#user-call-table').DataTable({
+    "ajax": "/calls/action",
+    "processing": true,
+    "serverSide": true,
+    "columns": [{"name": "id", "data": "id", "searchable": false}, {
+      "name": "content", "data": "content", "searchable": true
+    }, {"name": "staffNo", "data": "staffNo", "searchable": false}, {
+      "name": "callID", "data": "callID", "searchable": false
+    }, {"name": "createdAt", "data": "createdAt", "searchable": false}, {
+      "name": "owner", "data": "owner", "searchable": true, "visible": false
+    },],
+    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},] // phu hop voi so collums tren html
+  });
 
 
-  var user_phone = $('#user-phone').text();
   $('#notes').editable({
     mode: 'popup', //'popup'
-    type: 'textarea',
-    url: '/user/' + user_phone,
-    pk: '',//sao de xoa cai pk khoi param day ta T_T , pk de lam gi zay, no la cai qq gi za
+    type: 'textarea', url: '/user/' + user_phone, pk: '',//sao de xoa cai pk khoi param day ta T_T , pk de lam gi zay, no la cai qq gi za
     // no dung de goi qua backend update ma gio minh co api san roi, nen eo xai PK param dc
     params: function(params) {
       params.notes = params['value'];
@@ -19,9 +32,7 @@ $(function () {
       delete params['value'];
 
       return params;
-    },
-    title: 'Nhập ghi chú',
-    ajaxOptions: {
+    }, title: 'Nhập ghi chú', ajaxOptions: {
       type: 'put'
     }
   });
@@ -29,12 +40,11 @@ $(function () {
 //sua thanh inline o cho mô de coi docs
 
 
-
   socket = io.sails.connect();
   // test auth
   socket.get('/socket');
 
-  socket.on('user/authenticated', function (data) {
+  socket.on('user/authenticated', function(data) {
     console.log("got event user/authenticated", data);
   });
 
@@ -61,7 +71,7 @@ $(function () {
   path = decodeURIComponent(path);
 
   // Script to add active class on menu
-  $(".nav li a").each(function () {
+  $(".nav li a").each(function() {
     var href = $(this).attr('href').trim();
     var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
     currentURI = currentURI.replace(/^\//, "");
@@ -76,7 +86,7 @@ $(function () {
   });
 
 
-  $('#login').submit(function (e) {
+  $('#login').submit(function(e) {
     console.log('form submit called');
     e.preventDefault();
     var data = $('#login').serialize();

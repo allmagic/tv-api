@@ -18,6 +18,7 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/**/*.css',
+  'datatables/media/css/dataTables.bootstrap.min.css',
   'bootstrap/css/bootstrap-editable.css'
 ];
 
@@ -30,6 +31,8 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
   'plugins/jQuery/*.js',
   'bootstrap/js/bootstrap.min.js',
+  'datatables/media/js/jquery.dataTables.min.js',
+  'datatables/media/js/dataTables.bootstrap.min.js',
   //ong de trong folder do la no load ok roi
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',

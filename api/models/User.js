@@ -56,7 +56,7 @@ module.exports = {
 
     // Add a reference to call
     calls: {
-      collection: 'call',
+      collection: 'calls',
       via: 'owner'
     },
     // e.g., "cm"
@@ -70,6 +70,18 @@ module.exports = {
     // knownDialects: {
     //   collection: 'Dialect'
     // }
+  },
+  afterCreate: (newlyInsertedRecord, cb) => {
+    sails.log('newlyInsertedRecord', newlyInsertedRecord);
+    cb();
+  },
+  beforeUpdate: (valuesToUpdate, cb) => {
+    sails.log('valuesToUpdate', valuesToUpdate);
+    cb();
+  },
+  afterUpdate: (updatedRecord, cb) => {
+    sails.log('updatedRecord', updatedRecord);
+    cb();
   },
   getUserById: (phone) => {
     return new Promise((resolve, reject) => {

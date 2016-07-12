@@ -24,6 +24,7 @@ $(function() {
     "language": datatablesLang,
     "ajax": "/calls/action",
     "processing": true,
+    stateSave: true,
     "serverSide": true,
     "columns": [{"name": "id", "data": "id", "searchable": false}, {
       "name": "content", "data": "content", "searchable": true
@@ -33,9 +34,13 @@ $(function() {
       "name": "owner", "data": "owner", "searchable": true, "visible": true
     },],
     order:  [[ 0, 'desc' ]] , //desc ID
-    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
+    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone, "regex":true},], // phu hop voi so collums tren html
+    lengthMenu: [
+      [ 10, 25, 50, -1 ],
+      [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+    ],
     dom: 'Bfrtip',
-    buttons: [ 'csv', 'excel', 'pdf', 'print' ]
+    buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
 
   $('.user-info [userdata]').each(function(i,element){

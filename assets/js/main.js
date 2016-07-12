@@ -41,7 +41,7 @@ $(function() {
 
     $(element).editable({
       mode: 'popup', //'popup'
-      type: 'textarea', url: '/user/' + user_phone, pk: '',
+      type: 'text', url: '/user/' + user_phone, pk: '',
       params: function(params) {
         params[keyToUpdate] = params['value'];
 

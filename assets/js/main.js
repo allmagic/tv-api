@@ -33,7 +33,9 @@ $(function() {
       "name": "owner", "data": "owner", "searchable": true, "visible": true
     },],
     order:  [[ 0, 'desc' ]] , //desc ID
-    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},] // phu hop voi so collums tren html
+    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
+    dom: 'Bfrtip',
+    buttons: [ 'csv', 'excel', 'pdf', 'print' ]
   });
 
   $('.user-info [userdata]').each(function(i,element){

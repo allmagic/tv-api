@@ -7,14 +7,14 @@
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span>
       <span static-userdata="phone"><%= user.phone%></span></li>
     <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span>
-      <span title="Sua Dia chi" data-mode="inline" userdata="address"><%= user.address%></span>
+      <span data-toggle="tooltip" title="Sua Dia chi" data-mode="inline" userdata="address"><%= user.address%></span>
     </li>
     <li class="list-group-item"><span class="glyphicon glyphicon-gift pull-left"></span>
-      <span data-type="date" userdata="birthday"><%= user.birthday%></span>
+      <span data-toggle="tooltip" title="Sua Sinh Nhat" data-type="date" userdata="birthday"><%= user.birthday%></span>
       <!--Thu coi dc k-->
     </li>
     <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span>
-      <span data-mode="inline" userdata="email"><%= user.email%></span>
+      <span data-toggle="tooltip" title="Sua Dia Chi Email" data-mode="inline" userdata="email"><%= user.email%></span>
     </li>
   </ul>
 

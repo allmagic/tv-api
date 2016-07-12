@@ -53,11 +53,12 @@ $(function() {
       mode: 'popup', //'popup'
       type: 'text', url: '/user/' + user_phone, pk: '',
       params: function(params) {
-        params[keyToUpdate] = params['value'];
-
+        var updateText = params['value'];
         delete params['pk'];
         delete params['name'];
         delete params['value'];
+
+        params[keyToUpdate] = updateText;
 
         return params;
       }, title: title, ajaxOptions: {

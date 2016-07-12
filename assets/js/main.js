@@ -21,6 +21,7 @@ $(function() {
   user_phone = $(".user-info [static-userdata=phone]").text();
 
   callTable = $('#user-call-table').DataTable({
+    "language": datatablesLang,
     "ajax": "/calls/action",
     "processing": true,
     "serverSide": true,

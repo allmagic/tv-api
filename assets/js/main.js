@@ -84,6 +84,7 @@ $(function() {
 
     $.post( "/calls",postData, function( data ) {
       console.log('call saved done data', data);
+      callTable.draw(); // Render lai history
       $('#user-call-modal').modal('hide');
     });
 

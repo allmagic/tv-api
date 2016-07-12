@@ -8,6 +8,8 @@ $(function() {
   moment.locale('vi');
 
 
+  $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-success';
+
   function updateCallTimeByMoment(){
     $('#call-time').text(moment().format('DD/MM/YY, h:mm:ss a'));
   }
@@ -86,7 +88,7 @@ $(function() {
       "content": $('#call-content').val(),
         "staffNo": 22, //set later
         "callID": 10,//set later
-        "timestamp": moment().format('DD/MM/YY h:mm:ss'),
+        "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
         "owner": user_phone
     }
 

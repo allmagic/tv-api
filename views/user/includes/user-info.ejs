@@ -1,7 +1,7 @@
 
 <div class="col-sm-4 sidenav text-center user-info">
     <img src="<%= user.avatar || '/images/default-avatar.png' %>" class="img-circle img-thumbnail" alt="Cinque Terre" width="200" height="200">
-  <h1 userdata="name" class="text-danger"><%= user.name || '' %></h1>
+  <h1 userdata="name" class="no-border text-danger"><%= user.name || '' %></h1>
   <h5><span data-mode="inline" userdata="customer_group" class="label label-danger"><%= user.customer_group || '' %></span></h5>
   <ul class="list-group">
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span>
@@ -22,7 +22,7 @@
   <div class="panel panel-warning" >
   <div class="panel-heading"><span class="glyphicon glyphicon-list-alt pull-left"></span>Ghi Chú</div>
   <div class="panel-body"    data-toggle="tooltip" data-placement="right" title="Bấm để thêm/sửa ghi chú">
-    <p title="Sua Notes" data-type="textarea" userdata="notes"><%= user.notes || '' %></p>
+    <p title="Sua Notes" class="no-border" data-type="textarea" userdata="notes"><%= user.notes || '' %></p>
   </div>
   </div>
 

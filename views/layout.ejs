@@ -148,8 +148,19 @@
 <script src="/js/bootstrap-editable.min.js"></script>
 <script src="/js/incoming.js"></script>
 <script src="/js/jquery.timeago.js"></script>
+<script src="/js/moment.min.js"></script>
 <!--SCRIPTS END-->
 
+<script>
+  var taovang = {};
+
+  <% if(req.query.action) { %>
+
+  taovang.query_action = '<%= req.query.action %>';
+
+  <% } %>
+
+</script>
 
 </body>
 </html>

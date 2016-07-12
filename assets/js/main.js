@@ -2,9 +2,23 @@ var socket;
 var path = window.location.pathname;
 var callTable;
 var user_phone;
+var call_query_action = 'add-call';
 
 $(function() {
-  user_phone = $('#user-phone').text();
+  moment.locale('vi');
+
+
+  function updateCallTimeByMoment(){
+    $('#call-time').text(moment().format('DD/MM/YY, h:mm:ss a'));
+  }
+  updateCallTimeByMoment()
+  setInterval(function(){
+    updateCallTimeByMoment()
+  }, 1000);
+
+
+
+  user_phone = $(".user-info [static-userdata=phone]").text();
 
   callTable = $('#user-call-table').DataTable({
     "ajax": "/calls/action",
@@ -17,27 +31,64 @@ $(function() {
     }, {"name": "createdAt", "data": "createdAt", "searchable": false}, {
       "name": "owner", "data": "owner", "searchable": true, "visible": false
     },],
+    order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},] // phu hop voi so collums tren html
   });
 
-  $('#notes').editable({
-    mode: 'popup', //'popup'
-    type: 'textarea', url: '/user/' + user_phone, pk: '',
-    params: function(params) {
-      params.notes = params['value'];
+  $('.user-info [userdata]').each(function(i,element){
+    var keyToUpdate = $(element).attr('userdata');
+    var title = ($(element).attr('title')) ? $(element).attr('title') : 'Vui lòng nhập để sửa thông tin';
 
-      delete params['pk'];
-      delete params['name'];
-      delete params['value'];
+    $(element).editable({
+      mode: 'popup', //'popup'
+      type: 'textarea', url: '/user/' + user_phone, pk: '',
+      params: function(params) {
+        params[keyToUpdate] = params['value'];
 
-      return params;
-    }, title: 'Nhập ghi chú', ajaxOptions: {
-      type: 'put'
-    }
+        delete params['pk'];
+        delete params['name'];
+        delete params['value'];
+
+        return params;
+      }, title: title, ajaxOptions: {
+        type: 'put'
+      }
+    });
+
+  })
+
+
+  showAddNoteModel = function(){
+    $('#call-content').val('');//reset call content
+    $('#user-call-modal').modal().show();
+    $('#user-call-modal').find('textarea').focus();
+  };
+  if(taovang.query_action == call_query_action){
+    showAddNoteModel();
+  }
+
+  $('.add-call').click(function () {
+    showAddNoteModel();
   });
 
-//sua thanh inline o cho mô de coi docs
+  $('#save-call').click(function(){
+    //AJAX to add call history here
+    console.log('Call saved via AJAX');
+    var postData = {
+      "content": $('#call-content').val(),
+        "staffNo": 22, //set later
+        "callID": 10,//set later
+        "timestamp": moment().format('DD/MM/YY h:mm:ss'),
+        "owner": user_phone
+    }
 
+    $.post( "/calls",postData, function( data ) {
+      console.log('call saved done data', data);
+      $('#user-call-modal').modal('hide');
+    });
+
+
+  })
 
   socket = io.sails.connect();
   // test auth

@@ -33,24 +33,24 @@ $(function () {
       }
       $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
       $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone); // 1
-      
-      //phone se bo~
-      // vl troll vai me lag nhin cuc lam
+
 
     } else {
       // show data by params
       $('#incoming-modal .phone-number').text(data.sdtkh)
     }
     var modalOpt = {};
+
+    //update user_phone var no need
+    // user_phone = $('[userdata=phone]').text();
+
     $('#incoming-modal').modal(modalOpt);
   });
 
   $('.save-call-history').click(function(event){
     console.log('save call click');
     var parent = $(this).parents('#incoming-modal');
-    //Show note div, tu lam tiep dc k? dc e :D , khuc nay de ma thay ong tim kiem met vl -_-
-    //lag wa de do cai nay tui xu cho
-    // xu di tui nhin` , uh de ti moi xu duoc :D , ong nhin tui xu ko duoc T_T
+
     // console.log(parent);
     $(this).toggleClass('disabled');
     parent.find('form.call-history').toggle();

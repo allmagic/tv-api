@@ -18,6 +18,7 @@ module.exports = {
         return res.notFound("user not found");
 
       res.view('user/profile', {user});
+
     }
 
     concurrent();

@@ -14,7 +14,7 @@ module.exports = {
       nhanVien: 'Khanh Admin',
       testVariable: 'this is test value'
     };
-    
+
     return res.view('homepage', data)
   }
 }

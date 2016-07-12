@@ -1,29 +1,30 @@
-
 <div class="col-sm-4 sidenav text-center user-info">
-    <img src="<%= user.avatar || '/images/default-avatar.png' %>" class="img-circle img-thumbnail" width="125" height="125">
+  <img src="<%= user.avatar || '/images/default-avatar.png' %>" class="img-circle img-thumbnail" width="125"
+       height="125">
   <h1 userdata="name" class="no-border text-danger"><%= user.name || '' %></h1>
-  <h5><span data-mode="inline" userdata="customer_group" class="label label-danger"><%= user.customer_group || '' %></span></h5>
+  <h5><span data-mode="inline" userdata="customer_group"
+            class="label label-danger"><%= user.customer_group || '' %></span></h5>
   <ul class="list-group">
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span>
-      <span static-userdata="phone"><%= user.phone%></span></li>
-    <li data-toggle="tooltip" title="Bam Vao De Sua Dia chi" class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span>
+      <span static-userdata="phone"><%= user.phone %></span></li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span>
       <span title="Sua Dia chi" data-mode="inline" userdata="address"><%= user.address || '' %></span>
     </li>
-    <li data-toggle="tooltip" title="Bam Vao De Sua Sinh Nhat" class="list-group-item"><span class="glyphicon glyphicon-gift pull-left"></span>
-      <span  title="Sua Sinh Nhat" data-type="date" userdata="birthday"><%= user.birthday || '' %></span>
+    <li class="list-group-item"><span class="glyphicon glyphicon-gift pull-left"></span>
+      <span title="Sua Sinh Nhat" data-type="date" userdata="birthday"><%= user.birthday || '' %></span>
       <!--Thu coi dc k-->
     </li>
-    <li data-toggle="tooltip" title="Bam Vao De Sua Dia Chi Email" class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span>
+    <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span>
       <span title="Sua Dia Chi Email" data-mode="inline" userdata="email"><%= user.email || '' %></span>
     </li>
   </ul>
 
 
-  <div class="panel panel-warning" >
-  <div class="panel-heading"><span class="glyphicon glyphicon-list-alt pull-left"></span>Ghi Chú</div>
-  <div class="panel-body"    data-toggle="tooltip" data-placement="right" title="Bấm để thêm/sửa ghi chú">
-    <p title="Sua Notes" class="no-border" data-type="textarea" userdata="notes"><%= user.notes || '' %></p>
-  </div>
+  <div class="panel panel-warning">
+    <div class="panel-heading"><span class="glyphicon glyphicon-list-alt pull-left"></span>Ghi Chú</div>
+    <div class="panel-body">
+      <p title="Sua Notes" class="no-border" data-type="textarea" userdata="notes"><%= user.notes || '' %></p>
+    </div>
   </div>
 
 </div>

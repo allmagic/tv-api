@@ -2,7 +2,7 @@ var hideModal;
 $(function () {
 
   function resetModal() {
-    $('#incoming-modal .user-avatar').attr('src', 'http://placehold.it/380x500'); // 2
+    $('#incoming-modal .user-avatar').attr('src', '/images/default-avatar.png'); // 2
     var noInfo = 'Chưa có dữ liệu';
     //gio simple tui reset ve chua co du lieu nhe
 
@@ -29,10 +29,14 @@ $(function () {
       console.log('users', users);
       //loop all user key and set text
       for (userKey in users) {
-        $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
+        if(users[userKey])
+          $('#incoming-modal [userdata=' + userKey + ']').text(users[userKey]);
       }
-      $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
-      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone); // 1
+      if(users.avatar)
+        $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
+
+      var action = '?action='+call_query_action;
+      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone + action); // 1
 
 
     } else {

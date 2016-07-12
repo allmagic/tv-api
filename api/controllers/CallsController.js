@@ -11,7 +11,7 @@ module.exports = {
 
     var tableDefinition = {
       sTableName: 'Calls',
-      aSearchColumns: ['content']
+      aSearchColumns: ['content','owner','staffNo', 'callID']
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);

@@ -26,10 +26,10 @@ $(function() {
     "serverSide": true,
     "columns": [{"name": "id", "data": "id", "searchable": false}, {
       "name": "content", "data": "content", "searchable": true
-    }, {"name": "staffNo", "data": "staffNo", "searchable": false}, {
-      "name": "callID", "data": "callID", "searchable": false
+    }, {"name": "staffNo", "data": "staffNo", "searchable": true}, {
+      "name": "callID", "data": "callID", "searchable": true
     }, {"name": "createdAt", "data": "createdAt", "searchable": false}, {
-      "name": "owner", "data": "owner", "searchable": true, "visible": false
+      "name": "owner", "data": "owner", "searchable": true, "visible": true
     },],
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},] // phu hop voi so collums tren html

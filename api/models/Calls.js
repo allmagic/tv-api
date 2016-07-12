@@ -15,6 +15,9 @@ module.exports = {
       type: 'string',
       required: true
     },
+    SIPNo: {
+      type: 'string'
+    },
     callID: {
       type: 'string',
       required: true

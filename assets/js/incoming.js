@@ -15,7 +15,7 @@ $(function () {
 
   socket.on('incoming', function (data) {
     resetModal();
-
+    taovang.incoming_data = {};
     var hideAfter = 500; //secs
     clearTimeout(hideModal);
     hideModal = setTimeout(function () {
@@ -23,6 +23,7 @@ $(function () {
     }, hideAfter * 1000);
     console.log("got event with data", data);
 
+    taovang.incoming_data = data;
     // check user existed in db - show db info
     if (typeof data.users != 'undefined') {
       var users = data.users;
@@ -35,8 +36,11 @@ $(function () {
       if(users.avatar)
         $('#incoming-modal .user-avatar').attr('src', users.avatar); // 1
 
-      var action = '?action='+call_query_action;
-      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone + action); // 1
+      delete taovang.incoming_data['users'];
+      var actionParams = taovang.incoming_data;
+      actionParams.action = call_query_action;
+      // '?action='+call_query_action+ '&callid='+taovang.incoming_data;
+      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone + '?' + $.param(actionParams) ); // 1
 
 
     } else {

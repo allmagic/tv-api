@@ -87,8 +87,9 @@ $(function() {
     console.log('Call saved via AJAX');
     var postData = {
       "content": $('#call-content').val(),
-        "staffNo": 22, //set later
-        "callID": 10,//set later
+        "staffNo": taovang.user_id || 9999, //9999 is null
+        "callID": taovang.query_call_id || 9999, //9999 is null for required
+        "SIPNo": taovang.query_sodtnv || '', //9999 is null for required
         "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
         "owner": user_phone
     }

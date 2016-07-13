@@ -56,12 +56,14 @@ $(function() {
     "serverSide": true,
     "columns": [
       {"name": "id", "data": "id", "searchable": false , "visible": false},
-      {"name": "content", "data": "content", "searchable": true},
+      {"name": "name", "data": "name", "searchable": true, "visible": true},
+      {"name": "owner", "data": "owner", "searchable": true, "visible": true},
       {"name": "staffNo", "data": "staffNo", "searchable": true},
+      {"name": "content", "data": "content", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": true},
       {"name": "createdAt", "data": "createdAt", "searchable": false},
-      {"name": "owner", "data": "owner", "searchable": true, "visible": true},
-      {"name": "name", "data": "name", "searchable": true, "visible": true},
+
+
     ],
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
@@ -72,6 +74,17 @@ $(function() {
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
+
+  // var table = $('#user-home-table').DataTable();
+  //
+  // table
+  //   .column( 2 )
+  //   .data()
+  //   .each( function ( value, index ) {
+  //     console.log( 'sdt: '+index+' la: '+value );
+  //   } );
+  // để đây tối xử
+
 
   $('.user-info [userdata]').each(function(i,element){
     var keyToUpdate = $(element).attr('userdata');
@@ -95,6 +108,7 @@ $(function() {
     });
 
   })
+
 
 
   showAddNoteModel = function(){

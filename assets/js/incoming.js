@@ -53,6 +53,11 @@ $(function () {
     // user_phone = $('[userdata=phone]').text();
 
     $('#incoming-modal').modal(modalOpt);
+
+  });
+
+  $('.close-modal').click(function() {
+    $('#incoming-modal').modal('hide');
   });
 
   $('.save-call-history').click(function(event){

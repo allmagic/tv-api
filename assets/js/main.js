@@ -1,6 +1,7 @@
 var socket;
 var path = window.location.pathname;
 var callTable;
+var homeTable;
 var user_phone;
 var call_query_action = 'add-call';
 
@@ -30,6 +31,31 @@ $(function() {
     "serverSide": true,
     "columns": [
       {"name": "id", "data": "id", "searchable": false},
+      {"name": "content", "data": "content", "searchable": true},
+      {"name": "staffNo", "data": "staffNo", "searchable": true},
+      {"name": "callID", "data": "callID", "searchable": true},
+      {"name": "createdAt", "data": "createdAt", "searchable": false},
+      {"name": "owner", "data": "owner", "searchable": true, "visible": false},
+      {"name": "name", "data": "name", "searchable": true, "visible": false},
+    ],
+    order:  [[ 0, 'desc' ]] , //desc ID
+    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
+    lengthMenu: [
+      [ 10, 25, 50],
+      [ '10 rows', '25 rows', '50 rows' ]
+    ],
+    dom: 'Bfrtip',
+    buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
+  });
+
+  homeTable = $('#user-home-table').DataTable({
+    "language": datatablesLang,
+    "ajax": "/calls/action",
+    "processing": true,
+    stateSave: true,
+    "serverSide": true,
+    "columns": [
+      {"name": "id", "data": "id", "searchable": false , "visible": false},
       {"name": "content", "data": "content", "searchable": true},
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": true},

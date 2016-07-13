@@ -10,8 +10,9 @@ module.exports = {
   action: function(req, res) {
 
     var tableDefinition = {
-      sTableName: 'Calls',
-      aSearchColumns: ['content','owner','staffNo', 'callID']
+      // sTableName: 'Calls',
+      sFromSql: "Calls LEFT JOIN User ON Calls.owner=User.phone",
+      aSearchColumns: ['content','owner','staffNo', 'callID', 'name']
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);

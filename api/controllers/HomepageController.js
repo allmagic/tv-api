@@ -8,11 +8,14 @@
 module.exports = {
   index: (req, res) => {
     let sampleDate = (new Date()).toString();
+
     //
     let data = {
       currentDate: sampleDate,
       nhanVien: 'Khanh Admin',
-      testVariable: 'this is test value'
+      testVariable: 'this is test value',
+     
+
     };
 
     return res.view('homepage', data)

@@ -5,6 +5,11 @@ var homeTable;
 var user_phone;
 var call_query_action = 'add-call';
 
+function format ( d ) {
+  return '<div><ul><li>Ghi Chú : '+d.notes+'</li>'+
+    '<li>Hiển thị : thông tin chi tiết của khách</li></ul></div>';
+};
+
 $(function() {
   moment.locale('vi');
 
@@ -20,9 +25,8 @@ $(function() {
   }, 1000);
 
 
-
   user_phone = $(".user-info [static-userdata=phone]").text();
-
+  //Call Table Show
   callTable = $('#user-call-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/action",
@@ -47,7 +51,9 @@ $(function() {
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
+  //End Profile Call Table
 
+  //Home Table Show
   homeTable = $('#user-home-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/action",
@@ -55,6 +61,12 @@ $(function() {
     stateSave: true,
     "serverSide": true,
     "columns": [
+      {
+        "className": 'details-control',
+        "orderable": false,
+        "data": null,
+        "defaultContent": ''
+      },
       {"name": "id", "data": "id", "searchable": false , "visible": false},
       {"name": "name", "data": "name", "searchable": true, "visible": true},
       {"name": "owner", "data": "owner", "searchable": true, "visible": true,
@@ -76,20 +88,27 @@ $(function() {
       [ '10 rows', '25 rows', '50 rows' ]
     ],
     dom: 'Bfrtip',
-    buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
+    buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ],
+
   });
+  // End Home Table
+  $('#user-home-table tbody').on('click', 'td.details-control', function () {
+    var tr = $(this).closest('tr');
+    var row = homeTable.row( tr );
 
-  // var table = $('#user-home-table').DataTable();
-  //
-  // table
-  //   .column( 2 )
-  //   .data()
-  //   .each( function ( value, index ) {
-  //     console.log( 'sdt: '+index+' la: '+value );
-  //   } );
-  // để đây tối xử
+    if ( row.child.isShown() ) {
+      // This row is already open - close it
+      row.child.hide();
+      tr.removeClass('shown');
+    }
+    else {
+      // Open this row
+      row.child( format(row.data()) ).show();
+      tr.addClass('shown');
+    }
+  } );
 
-
+  // x-editable
   $('.user-info [userdata]').each(function(i,element){
     var keyToUpdate = $(element).attr('userdata');
     var title = ($(element).attr('title')) ? $(element).attr('title') : 'Vui lòng nhập để sửa thông tin';

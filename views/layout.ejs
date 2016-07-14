@@ -58,9 +58,13 @@
 
             <% if(!req.session.user_id){ %>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
             </ul>
-            <% } %>
+            <% } else { %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Đăng Xuất</a></li>
+          </ul>
+          <% } %>
             <!-- cai này tui tìm nãy giờ =))-->
         </div>
     </div>

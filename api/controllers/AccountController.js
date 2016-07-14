@@ -33,7 +33,7 @@ module.exports = {
 
   logout: (req, res) => {
     req.session.destroy(function(err) {
-      console.log('user out');
+      res.redirect('/home');
     });
   }
 

@@ -29,6 +29,12 @@ module.exports = {
     }).catch((err) => {
       res.json(500, {"message": err})
     })
+  },
+
+  logout: (req, res) => {
+    req.session.destroy(function(err) {
+      console.log('user out');
+    });
   }
 
 

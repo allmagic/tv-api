@@ -57,7 +57,11 @@ $(function() {
     "columns": [
       {"name": "id", "data": "id", "searchable": false , "visible": false},
       {"name": "name", "data": "name", "searchable": true, "visible": true},
-      {"name": "owner", "data": "owner", "searchable": true, "visible": true},
+      {"name": "owner", "data": "owner", "searchable": true, "visible": true,
+        "render": function ( data, type, full, meta ) {
+          return '<a href="/profile/'+data+'">'+data+'</a>';
+        }
+      },
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "content", "data": "content", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": true},

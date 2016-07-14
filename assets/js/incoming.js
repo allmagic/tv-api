@@ -14,6 +14,7 @@ $(function () {
   }
 
   socket.on('incoming', function (data) {
+
     resetModal();
     taovang.incoming_data = {};
     var hideAfter = 500; //secs
@@ -53,11 +54,13 @@ $(function () {
     // user_phone = $('[userdata=phone]').text();
 
     $('#incoming-modal').modal(modalOpt);
-
+    $("#audio4")[0].play();
   });
 
   $('.close-modal').click(function() {
     $('#incoming-modal').modal('hide');
+    $("#audio4")[0].pause();
+    $("#audio4")[0].currentTime = 0;
   });
 
   $('.save-call-history').click(function(event){

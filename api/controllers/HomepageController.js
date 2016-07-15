@@ -14,10 +14,7 @@ module.exports = {
       currentDate: sampleDate,
       nhanVien: 'Khanh Admin',
       testVariable: 'this is test value',
-     
-
     };
-
     return res.view('homepage', data)
   }
 }

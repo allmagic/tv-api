@@ -47,6 +47,9 @@ module.exports.routes = {
   '/login': 'LoginController.index',
   '/logout': 'AccountController.logout',
   '/profile/:phone': 'UserController.profile',
+  '/user/list': {
+    view: 'user/list'
+  },
 
 
   /***************************************************************************

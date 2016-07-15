@@ -2,6 +2,7 @@ var socket;
 var path = window.location.pathname;
 var callTable;
 var homeTable;
+var contactTable;
 var user_phone;
 var call_query_action = 'add-call';
 
@@ -26,10 +27,44 @@ $(function() {
 
 
   user_phone = $(".user-info [static-userdata=phone]").text();
+  contactTable = $('#user-contact-table').DataTable({
+    "language": datatablesLang,
+    "ajax": "/user/datatable",
+    "processing": true,
+    stateSave: true,
+    "serverSide": true,
+    "columns": [
+      {"name": "name", "data": "name", "searchable": false},
+      {"name": "avatar", "data": "avatar", "searchable": true,
+        "render": function ( data, type, full, meta ) {
+          return '<img width="80" src="'+data+'">';
+        }
+      },
+      {"name": "phone", "data": "phone", "searchable": true},
+      {"name": "customer_group", "data": "customer_group", "searchable": true},
+      {"name": "address", "data": "address", "searchable": false},
+      {"name": "birthday", "data": "birthday", "searchable": true},
+      {"name": "company", "data": "company", "searchable": true},
+      {"name": "email", "data": "email", "searchable": true},
+      {"name": "facebook", "data": "facebook", "searchable": true},
+      {"name": "zalo", "data": "zalo", "searchable": true},
+      {"name": "viber", "data": "viber", "searchable": true},
+      {"name": "notes", "data": "notes", "searchable": true},
+      {"name": "createdAt", "data": "createdAt", "searchable": true},
+    ],
+    // order:  [[ 0, 'desc' ]] , //desc ID
+    "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},], // phu hop voi so collums tren html
+    lengthMenu: [
+      [ 10, 25, 50],
+      [ '10 rows', '25 rows', '50 rows' ]
+    ],
+    dom: 'Bfrtip',
+    buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
+  });
   //Call Table Show
   callTable = $('#user-call-table').DataTable({
     "language": datatablesLang,
-    "ajax": "/calls/action",
+    "ajax": "/calls/datatable",
     "processing": true,
     stateSave: true,
     "serverSide": true,
@@ -56,7 +91,7 @@ $(function() {
   //Home Table Show
   homeTable = $('#user-home-table').DataTable({
     "language": datatablesLang,
-    "ajax": "/calls/action",
+    "ajax": "/calls/datatable",
     "processing": true,
     stateSave: true,
     "serverSide": true,

@@ -7,7 +7,7 @@
 import QueryBuilder from 'datatable';
 
 module.exports = {
-  action: function(req, res) {
+  datatable: function(req, res) {
 
     var tableDefinition = {
       // sTableName: 'Calls',

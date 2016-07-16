@@ -32,7 +32,7 @@ module.exports = {
       // sTableName: 'Calls',
       sTableName: 'User',
       sSelectSql: '*',
-      aSearchColumns: ['name','avatar','phone', 'customer_group', 'address','birthday','company','email','facebook','zalo','viber','notes','createdAt',]
+      aSearchColumns: ['avatar','name','customer_group','company','phone', 'email', 'address','birthday','facebook','zalo','viber','notes','createdAt',]
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);

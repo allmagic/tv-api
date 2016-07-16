@@ -8,23 +8,34 @@ var call_query_action = 'add-call';
 
 function format (d) {
   return  '<div class="container-fluid row-detail">'+
-    '<div class="row">'+
-    '<div class="col-sm-2 sidenav text-center">'+
-    '<img src="'+d.avatar+'" class="img-rounded img-thumbnail" width="120" height="120">'+
-    '</div>'+
-    '<div class="col-sm-10">'+
-    '<div class="alert alert-success">Bạn đang xem thông tin chi tiết của khách hàng : <strong>'+d.name+'</strong></div>'+
-    '<div class="col-sm-6">'+
-    '<ul class="list-group">'+
-    '<li class="list-group-item"><span class="badge">Email</span>'+ d.email+'</li>'+
-    '<li class="list-group-item"><span class="badge">Facebook</span>'+ d.facebook+'</li>'+
-    '</ul></div>'+
-    '<div class="col-sm-6">'+
-    '<ul class="list-group">'+
-    '<li class="list-group-item"><span class="badge">Viber</span>'+ d.viber+'</li>'+
-    '<li class="list-group-item"><span class="badge">Zalo</span>'+ d.zalo+'</li>'+
-    '</ul></div>'+
-    '</div></div></div>';
+            '<div class="row">'+
+              '<div class="col-sm-2 sidenav text-center">'+
+                '<img src="'+d.avatar+'" class="img-rounded img-thumbnail" width="120" height="120"><br />'+
+                '<div class="btn-group btn-group-justified"><a href="../profile/'+d.phone+'" class="btn btn-primary">Sửa Thông Tin</a></div>'+
+              '</div>'+
+              '<div class="col-sm-10">'+
+                '<div class="alert alert-success">Bạn đang xem thông tin chi tiết của khách hàng : <strong>'+d.name+'</strong></div>'+
+              '<div class="row">'+
+              '<div class="col-sm-6">'+
+                '<ul class="list-group">'+
+                  '<li class="list-group-item"><span class="badge">Email</span>'+ d.email+'</li>'+
+                  '<li class="list-group-item"><span class="badge">Facebook</span>'+ d.facebook+'</li>'+
+                '</ul>' +
+              '</div>'+
+              '<div class="col-sm-6">'+
+                '<ul class="list-group">'+
+                  '<li class="list-group-item"><span class="badge">Viber</span>'+ d.viber+'</li>'+
+                  '<li class="list-group-item"><span class="badge">Zalo</span>'+ d.zalo+'</li>'+
+                '</ul>' +
+              '</div></div>'+
+
+    '<div class="row col-sm-12">'+
+    '<div class="alert alert-warning">'+
+    '<strong>Ghi Chú : </strong>' +d.notes+
+  '</div></div>'+
+            '</div>' +
+          '</div>' +
+    '</div>';
 };
 
 $(function() {
@@ -49,6 +60,13 @@ $(function() {
     "processing": true,
     stateSave: true,
     "serverSide": true,
+    "columnDefs": [
+      { "width": "10px", "targets": 0 },
+      { "width": "150px", "targets": 1 },
+      { "width": "100px", "targets": [2,3,4,5,6] },
+
+
+    ],
     "columns": [
       {
         "className": 'details-control',
@@ -62,7 +80,6 @@ $(function() {
       {"name": "phone", "data": "phone", "searchable": true},
       {"name": "address", "data": "address", "searchable": false},
       {"name": "birthday", "data": "birthday", "searchable": true},
-      {"name": "notes", "data": "notes", "searchable": true},
       {"name": "createdAt", "data": "createdAt", "searchable": true},
     ],
     // order:  [[ 0, 'desc' ]] , //desc ID
@@ -135,17 +152,19 @@ $(function() {
   });
   // End Home Table
   $('#user-contact-table tbody').on('click', 'td.details-control', function() {
+
     var tr = $(this).closest('tr');
     var row = contactTable.row(tr);
 
     if ( row.child.isShown() ) {
       // This row is already open - close it
-      row.child.hide();
+      row.child.hide("slow");
       tr.removeClass('shown');
+
     }
     else {
       // Open this row
-      row.child( format(row.data()) ).show();
+      row.child( format(row.data()) ).show("slow");
       tr.addClass('shown');
     }
   } );

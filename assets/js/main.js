@@ -40,7 +40,7 @@ function format (d) {
 
 $(function() {
   moment.locale('vi');
-
+  $('form').validator()
 
   $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-success';
 
@@ -198,6 +198,7 @@ $(function() {
 
 
   showAddNoteModel = function(){
+    $('#user-call-modal .alert').hide();//hide err
     $('#call-content').val('');//reset call content
     $('#user-call-modal').modal().show();
     $('#user-call-modal').find('textarea').focus();
@@ -215,8 +216,8 @@ $(function() {
     console.log('Call saved via AJAX');
     var postData = {
       "content": $('#call-content').val(),
-        "staffNo": taovang.user_id || 9999, //9999 is null
-        "callID": taovang.query_call_id || 9999, //9999 is null for required
+        "staffNo": taovang.user_id || 0, //9999 is null
+        "callID": taovang.query_call_id || 0, //9999 is null for required
         "SIPNo": taovang.query_sodtnv || '', //9999 is null for required
         "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
         "owner": user_phone
@@ -226,7 +227,10 @@ $(function() {
       console.log('call saved done data', data);
       callTable.draw(); // Render lai history
       $('#user-call-modal').modal('hide');
-    });
+    }).fail(function(xhr, status, error) {
+      $('#user-call-modal .alert').text(xhr.responseJSON.message).show();//hide err
+      // error handling
+    });;
 
 
   })

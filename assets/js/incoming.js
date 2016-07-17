@@ -1,5 +1,35 @@
 var hideModal;
 $(function () {
+  // get permission to run notifications
+  Notification.requestPermission().then(function(result) {
+    console.log(result)
+  });
+
+
+    // // Let's check if the browser supports notifications
+    //
+    // if (!("Notification" in window)) {
+    //   alert("Trình duyệt này không hỗ trợ bật thông báo");
+    // }
+    //
+    // // Let's check whether notification permissions have already been granted
+    // else if (Notification.permission === "granted") {
+    //   // If it's okay let's create a notification
+    //   var notification = new Notification("Có điện thoại đến!",options);
+    // }
+    //
+    // // Otherwise, we need to ask the user for permission
+    // else if (Notification.permission !== 'denied') {
+    //   Notification.requestPermission(function (permission) {
+    //     // If the user accepts, let's create a notification
+    //     if (permission === "granted") {
+    //       var notification = new Notification("Hi there!");
+    //     }
+    //   });
+    // }
+    //
+    // // Finally, if the user has denied notifications and you
+    // // want to be respectful there is no need to bother them any more.
 
   function resetModal() {
     $('#incoming-modal .user-avatar').attr('src', '/images/default-avatar.png'); // 2
@@ -14,7 +44,7 @@ $(function () {
   }
 
   socket.on('incoming', function (data) {
-    notifyMe();
+
     resetModal();
     taovang.incoming_data = {};
     var hideAfter = 500; //secs
@@ -43,7 +73,6 @@ $(function () {
       // '?action='+call_query_action+ '&callid='+taovang.incoming_data;
       $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone + '?' + $.param(actionParams) ); // 1
 
-
     } else {
       // show data by params
       $('#incoming-modal .phone-number').text(data.sdtkh)
@@ -55,6 +84,18 @@ $(function () {
 
     $('#incoming-modal').modal(modalOpt);
     $("#audio4")[0].play();
+
+    // Let's check if the browser supports notifications
+    var options = {
+      body: users.phone,
+      icon: users.avatar,
+      sound: '../styles/img/notification.mp3'
+    }
+    var n = new Notification("Cuộc gọi đến! ( "+users.name+" )",options);
+    setTimeout(n.close.bind(n), 8000);
+
+    // Finally, if the user has denied notifications and you
+    // want to be respectful there is no need to bother them any more.
   });
 
   $('.close-modal').click(function() {
@@ -74,33 +115,4 @@ $(function () {
   })
 });
 
-  // get permission to run notifications
-  Notification.requestPermission().then(function(result) {
-    console.log(result)
-  });
 
-  function notifyMe() {
-  // Let's check if the browser supports notifications
-  if (!("Notification" in window)) {
-    alert("Trình duyệt này không hỗ trợ bật thông báo");
-  }
-
-  // Let's check whether notification permissions have already been granted
-  else if (Notification.permission === "granted") {
-    // If it's okay let's create a notification
-    var notification = new Notification("Hi there!");
-  }
-
-  // Otherwise, we need to ask the user for permission
-  else if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function (permission) {
-      // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        var notification = new Notification("Hi there!");
-      }
-    });
-  }
-
-  // Finally, if the user has denied notifications and you
-  // want to be respectful there is no need to bother them any more.
-}

@@ -62,8 +62,10 @@ $(function() {
     "serverSide": true,
     "columnDefs": [
       { "width": "10px", "targets": 0 },
-      { "width": "150px", "targets": 1 },
-      { "width": "100px", "targets": [2,3,4,5,6] },
+      { "width": "200px", "targets": 1 },
+      { "width": "200px", "targets": 5 },
+      { "width": "100px", "targets": [2,3,4,6] },
+
 
 
     ],
@@ -83,7 +85,7 @@ $(function() {
       {"name": "createdAt", "data": "createdAt", "searchable": true},
     ],
     // order:  [[ 0, 'desc' ]] , //desc ID
-    "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},], // phu hop voi so collums tren html
+    "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}], // phu hop voi so collums tren html
     lengthMenu: [
       [ 10, 25, 50],
       [ '10 rows', '25 rows', '50 rows' ]

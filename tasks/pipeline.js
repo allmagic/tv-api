@@ -17,7 +17,10 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.css',
+  // 'datatables/media/css/dataTables.bootstrap.min.css',
+  'bootstrap/css/bootstrap-editable.css',
+  'datatables/builder/*.css',
 ];
 
 
@@ -29,11 +32,18 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
   'plugins/jQuery/*.js',
   'bootstrap/js/bootstrap.min.js',
+  'datatables/builder/*.js',
+  // 'datatables/media/js/jquery.dataTables.min.js',
+  // 'datatables/media/js/dataTables.bootstrap.min.js',
+  // 'datatables/extensions/Buttons/js/buttons.bootstrap.min.js',
+  //ong de trong folder do la no load ok roi
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  'js/main.js',
+  'js/**/*.js',
+
 ];
 
 

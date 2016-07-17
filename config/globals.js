@@ -10,6 +10,7 @@
  */
 module.exports.globals = {
 
+  MY_VAR: 'this my mine',
   /****************************************************************************
   *                                                                           *
   * Expose the lodash installed in Sails core as a global variable. If this   *

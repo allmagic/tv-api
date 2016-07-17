@@ -1,0 +1,19 @@
+<script>
+  var taovang = {};
+
+  <% if(req.query.action) { %>
+    taovang.query_action = '<%= req.query.action %>';
+  <% } %>
+  <% if(req.query.callid) { %>
+    taovang.query_call_id = '<%= req.query.callid %>';
+  <% } %>
+  <% if(req.query.sodtnv) { %>
+    taovang.query_sodtnv = '<%= req.query.sodtnv %>';
+  <% } %>
+
+  <% if(req.session.user_id) { %>
+    taovang.user_id = '<%= req.session.user_id %>';
+  <% } %>
+
+
+</script>

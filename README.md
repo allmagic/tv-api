@@ -11,3 +11,5 @@ StartDB
     -e MYSQL_DATABASE=taovang_crm \
     -d mysql:latest
 
+Start Redis
+    docker run -d -p 6379:6379 -e REDIS_PASS="xXx" tutum/redis

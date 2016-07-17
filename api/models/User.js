@@ -6,20 +6,26 @@
  */
 
 module.exports = {
-
+  autoPK: false,
   attributes: {
     name: {
       type: 'string',
-      required: true
+      // required: true
+    },
+    avatar: {
+      type: 'url'
     },
     phone: {
       type: 'string',
       unique: true,
-      required: true
+      required: true,
+      primaryKey: true
     },
     customer_group: {
       type: 'string',
-      required: true
+      enum: ['basic', 'gold', 'diamond']
+
+      // required: true
     },
     address: {
       type: 'string'
@@ -31,7 +37,7 @@ module.exports = {
       type: 'string'
     },
     email: {
-      type: 'string',
+      type: 'email',
       unique: true
     },
     facebook: {
@@ -46,12 +52,15 @@ module.exports = {
       type: 'string',
       unique: true
     },
-    note: {
-      type: 'array'
+    notes: {
+      type: 'string'
     },
-    history: {
-      type: 'array'
-    }
+
+    // Add a reference to call
+    calls: {
+      collection: 'calls',
+      via: 'owner'
+    },
     // e.g., "cm"
     // wingspanUnits: {
     //   type: 'string',
@@ -63,6 +72,27 @@ module.exports = {
     // knownDialects: {
     //   collection: 'Dialect'
     // }
-  }
+  },
+  afterCreate: (newlyInsertedRecord, cb) => {
+    sails.log('newlyInsertedRecord', newlyInsertedRecord);
+    cb();
+  },
+  beforeUpdate: (valuesToUpdate, cb) => {
+    sails.log('valuesToUpdate', valuesToUpdate);
+    cb();
+  },
+  afterUpdate: (updatedRecord, cb) => {
+    sails.log('updatedRecord', updatedRecord);
+    cb();
+  },
+  getUserById: (phone) => {
+    return new Promise((resolve, reject) => {
+      User.findOne( phone ).exec((err, user) => {
+        if(err)
+          reject(err)
+        resolve(user)
+      })
+    })
+  },
 };
 

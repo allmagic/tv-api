@@ -1,0 +1,49 @@
+<div id="incoming-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cuộc Gọi Đến</h4>
+        <audio id="audio4" loop><source src="/styles/img/ring.mp3" type="audio/mpeg"></audio>
+      </div>
+
+
+        <div class="col-sm-12 sidenav text-center">
+          <img src="/images/default-avatar.png" class="img-circle img-thumbnail user-avatar" width="150" height="150">
+          <h1 class="text-danger" userdata="name"></h1>
+          <h5><span class="label label-danger" userdata="customer_group"></span></h5>
+          <ul class="list-group">
+            <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span><span userdata="phone"></span></li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-map-marker pull-left"></span><span  userdata="address"></span></li>
+
+          </ul>
+          <div class="panel panel-warning">
+            <div class="panel-heading"><span class="glyphicon glyphicon-list-alt pull-left"></span>Ghi Chú</div>
+            <div class="panel-body">
+              <p title="Sua Notes" class="no-border" data-type="textarea" userdata="notes"></p>
+            </div>
+          </div>
+
+          <form role="form" class="call-history">
+
+            <div class="modal-footer">
+              <div class="btn-group btn-group-justified">
+                <a href="#" class="go_profile_btn btn btn-success">Go Profile</a>
+
+                <a href="#" class="close-modal btn btn-danger">Close</a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+
+
+
+
+  </div>
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

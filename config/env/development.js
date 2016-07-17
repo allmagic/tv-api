@@ -18,7 +18,23 @@ module.exports = {
    ***************************************************************************/
 
   models: {
-    connection: 'localDiskDb'
+    connection: 'localDiskDb',
+    migrate: 'alter'//drop no xoa het:s cho no sach
   }
 
+  // models: {
+  //   connection: 'mysqldb',
+  //   migrate: 'alter'//drop no xoa het:s cho no sach
+  // },
+  // connections: {
+  //   mysqldb: {
+  //     adapter: 'sails-mysql',
+  //     host: 'localhost',
+  //     port: 3306,
+  //     user: 'root', //optional
+  //     password: '', //optional
+  //     database: 'taovang_crm_mysql' //optional
+  //   }
+  // },
 };
+// =]]

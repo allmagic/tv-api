@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%=typeof title == 'undefined' ? 'TV ' : title%></title>
+<head>
+    <title><%= typeof title == 'undefined' ? 'TV ' : title %></title>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -30,69 +32,138 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-editable.css">
+    <link rel="stylesheet" href="/datatables/builder/datatables.min.css">
     <!--STYLES END-->
-  </head>
 
-  <body class="">
+  <link rel="manifest" href="/js/manifest.json">
 
 
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CRM</a>
+        </div>
+        <!-- sumay cai nay su bi sai het roi su là gì nhu bi sai-->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/home">Trang Chủ</a></li>
+                <li><a href="/user/list">Danh Bạ</a></li>
+              <li><a href="/about">About</a></li>
+
+            </ul>
+
+            <% if(!req.session.user_id){ %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+            </ul>
+            <% } else { %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Đăng Xuất</a></li>
+          </ul>
+          <% } %>
+            <!-- cai này tui tìm nãy giờ =))-->
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
     <%- body %>
+</div>
 
 
-    <!--
-        Client-side Templates
-        ========================
-
-        HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/templates` folder, then
-        include them here automatically (between TEMPLATES and TEMPLATES END).
-
-        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your client-side templates using a server-side
-              stringfile before they're served.
-    -->
-
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
 
 
-    <!--
+<!-- Content Wrapper. Contains page content -->
 
-      Client-side Javascript
-      ========================
+<!-- Chỗ này là file load như pass.ejs -->
 
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
-      By default, files in your `assets/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
+<!-- /.content-wrapper -->
 
-      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-      For example, here are a few things you could do:
+<footer class="footer">
 
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
+        <p class="text-muted">by xxx</p>
 
-    -->
+</footer>
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/main.js"></script>
-    <!--SCRIPTS END-->
-  </body>
+
+<!-- Notification Modal Common -->
+<%- partial('common/incoming-modal.ejs') %>
+<!--
+    Client-side Templates
+    ========================
+
+    HTML templates are important prerequisites of modern, rich client applications.
+    To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+    that you load these templates client-side.
+
+    By default, your Gruntfile is configured to automatically load and precompile
+    client-side JST templates in your `assets/templates` folder, then
+    include them here automatically (between TEMPLATES and TEMPLATES END).
+
+    To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+    For example, here are a few things you could do:
+
+        + Import templates from other directories
+        + Use a different template engine (handlebars, jade, dust, etc.)
+        + Internationalize your client-side templates using a server-side
+          stringfile before they're served.
+-->
+
+<!--TEMPLATES-->
+
+<!--TEMPLATES END-->
+
+
+<!--
+
+  Client-side Javascript
+  ========================
+
+  You can always bring in JS files manually with `script` tags, or asynchronously
+  on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+  take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+  By default, files in your `assets/js` folder are included here
+  automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+  CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+  and concatenated into a single file.
+
+  To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+  For example, here are a few things you could do:
+
+      + Change the order of your scripts
+      + Import scripts from other directories
+      + Use a different preprocessor, like TypeScript
+
+-->
+
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/datatables/builder/datatables.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/bootstrap-editable.min.js"></script>
+<script src="/js/datatables.lang.js"></script>
+<script src="/js/incoming.js"></script>
+<script src="/js/jquery.timeago.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/js/sw-notify.js"></script>
+<script src="/js/sw.js"></script>
+<script src="/js/validator.min.js"></script>
+<!--SCRIPTS END-->
+
+<%- partial('init') %>
+
+</body>
 </html>

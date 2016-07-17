@@ -33,6 +33,11 @@ module.exports.connections = {
     adapter: 'sails-disk'
   },
 
+  redis: {
+    port: 6379,
+    host: 'localhost'
+  },
+
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *

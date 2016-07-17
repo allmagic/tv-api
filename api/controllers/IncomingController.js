@@ -8,76 +8,78 @@
  *
  */
 
+// vi du await cua es7
+// async function concurrent () {
+//   sails.log('run conn');
+//   let p1 = new Promise((resolve, reject) => {
+//     resolve("ahihi");
+//   })
+//   let p2 = new Promise((resolve, reject) => {
+//     resolve("ahihi2");
+//   })
+//
+//   let [r1] = await Promise.all([p1]);
+//   let [r2] = await Promise.all([p2]);
+//
+//   // wait de cho` va lay dc return cua 1 promise
+//   sails.log('r1', r1);
+//   sails.log('r2', r2);
+// }
+
+// concurrent();
+
 module.exports = {
   index: (req, res) => {
-
-    //
-    // console.log('req', req);
-    // nen xai allParams() la co the lay dc only param, cai nay la helper no viet san
-    // gan' vao object req hoi xua truoc khi xai javascript ong nghe ve may kiey interface nay goi la
-    // Prototype, nhung gio es6 viet suong tay lam
-
-
     var params = req.allParams(); //allParams la fn buildin
-
-    console.log('params', params);
 
     if (Object.keys(params).length == 0) // Check params > 0
       return res.json(404, {"error": "please provide one or more params"});
 
     let findUserDone = new Promise((resolve, reject) => {
-      User.find({name: params.name}).exec((err, users) => {
+      User.findOne({phone: params.sdtkh}).exec((err, users) => {
           if (err) {
             reject(err)
           }
-
           resolve(users);
         }
       )
     })
 
-    
+    async function concurrent() {
+      var [users] = await Promise.all([findUserDone]);
 
-    findUserDone.then((users) => {
-      console.log('fuck user', users)
+      if (!users) {
+        // Create user if not and return user data to check by frontend JS
+        let createUserDone = new Promise((resolve, reject) => {
+          User.create({phone: params.sdtkh}).exec((err, user) => {
+            if (err) {
+              sails.log('err', err);
+              reject(err);
+            }
+
+            resolve(user);
+          })
+        })
+
+        //overwrite users var after user created
+        var [users] = await Promise.all([createUserDone]);
+      }
+
+      var totalClients = await new Promise((resolve, reject) => {
+        sails.io.sockets.in('logged').clients((err, clients) => {
+          resolve(clients.length);
+        })
+      });
+
       let notifyData = params;
+
       notifyData.users = users; //add users to notifyData
 
-      // Notify all browser when user found
-      sails.sockets.blast('incoming', notifyData);
-    }).catch((error)=> {
-      console.log('we got error msg', error);
-    })
+      sails.sockets.broadcast('logged', 'incoming', notifyData);// cho het nguoi trong room logged
 
-    // console.log('sails.sockets', sails.sockets);
-    // lay response cb xong write ra json no co rat nhieu function
-    res.json(200, {"message": "new message blast"});
-    //res.send(params);
+      res.json(200, {"message": "notify success", users, totalClients});
+    }
 
-    // return res.view('homepage', params);
-
+    concurrent();
   }
 }
-
-// module.exports = { //my object }
-// trong js khac' voi trong php, php khong can export cung~ require va include dc
-// trong js muon nta include dc phai export bang syntax module.exports =
-// O day minh co object {}
-// key la index
-// tui dang xai es6 nen cach viet xoa bot di may cai ruom ra cua function nay no
-// thuc ra no la vay gio chay van dc
-// nhin sach hon :D uh
-// req la param dau tien khi no callback minh dat ten la req
-// res la param thu 2 dung de~ response noi dung ve cho user khi callback dat ten la res thuc ra la ten gi cung dc
-// nhung req res nhin sach dep
-// muon debug chi can console.log('xxxx', 'xxxx')
-
-// sails.sockets la` thang fw viet san~ roi co nhieu lam o day:
-// o day tui dung blast la` nhanh nhat' vi no phat' het user luon, vi minh khong co phan biet user nao, room nao
-// nay no dung roi
-// ben nay de~ hieu hon vi no wrap lai het roi
-
-// nhung code o day chay o server
-// no tim het socket xong no push event 'incoming', params tu` server di den cac browser dang co WS connection
-
-

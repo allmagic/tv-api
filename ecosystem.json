@@ -1,0 +1,27 @@
+{
+  "apps" : [{
+    "name"      : "crm",
+    "script"    : "index.js",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy" : {
+    "production" : {
+      "user" : "root",
+      "host" : [{
+        "host": "vnmagic.net -p 2222"
+      }],
+      "ref"  : "origin/dev/king",
+      "repo" : "git@github.com:allmagic/tv-api.git",
+      "path" : "/root/deployment",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production",
+      "env"  : {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ module.exports = {
       host: 'vnmagic.net',
       port: 2307,
       user: 'root', //optional
-      password: 'Diablo321', //optional
+      password: '', //optional
       database: 'taovang_crm' //optional
     },
   }

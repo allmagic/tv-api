@@ -23,6 +23,8 @@ module.exports = {
     },
     customer_group: {
       type: 'string',
+      enum: ['basic', 'gold', 'diamond']
+
       // required: true
     },
     address: {

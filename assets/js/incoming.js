@@ -1,5 +1,19 @@
 var hideModal;
+
 $(function () {
+
+
+  taovang.gcmKey = 'AIzaSyBCrUuU1aw4fV7KScJAFZTmRlaNVLshNz4';
+
+  /*
+
+   curl --header "Authorization: key=AIzaSyBCrUuU1aw4fV7KScJAFZTmRlaNVLshNz4" \
+   --header Content-Type:"application/json" \
+   https://gcm-http.googleapis.com/gcm/send \
+   -d "{\"registration_ids\":[\"157343421511\"]}"
+
+  * */
+
   // get permission to run notifications
   Notification.requestPermission().then(function(result) {
     console.log(result)
@@ -71,7 +85,8 @@ $(function () {
       var actionParams = taovang.incoming_data;
       actionParams.action = call_query_action;
       // '?action='+call_query_action+ '&callid='+taovang.incoming_data;
-      $('#incoming-modal .go_profile_btn').attr('href', '/profile/' + users.phone + '?' + $.param(actionParams) ); // 1
+      taovang.go_profile_url = '/profile/' + users.phone + '?' + $.param(actionParams) ;
+      $('#incoming-modal .go_profile_btn').attr('href', taovang.go_profile_url); // 1
 
     } else {
       // show data by params
@@ -89,10 +104,22 @@ $(function () {
     var options = {
       body: users.phone,
       icon: users.avatar,
-      sound: '../styles/img/notification.mp3'
+      sound: '/styles/img/notification.mp3'
     }
+
+    /*
+
     var n = new Notification("Cuộc gọi đến! ( "+users.name+" )",options);
+    n.onclick = function() {
+      $("#audio4")[0].pause();
+      if(taovang.go_profile_url)
+        window.open(taovang.go_profile_url)
+    }
     setTimeout(n.close.bind(n), 8000);
+
+    */
+
+
 
     // Finally, if the user has denied notifications and you
     // want to be respectful there is no need to bother them any more.

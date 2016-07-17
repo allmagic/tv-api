@@ -28,7 +28,7 @@ module.exports.policies = {
 
 
 
-  // '*': 'sessionAuth',
+  '*': 'sessionAuth',
   'LoginController': {
     '*': true,
     'index': 'notSessionAuth',
@@ -38,8 +38,8 @@ module.exports.policies = {
     'login': true,
   },
 
-  // 'IncomingController' : 'tokenAuth',
-  // 'UserController' : 'tokenAuth',
+  'IncomingController' : 'tokenAuth',
+  'UserController' : 'tokenAuth',
 
   /***************************************************************************
    *                                                                          *

@@ -14,7 +14,7 @@ $(function () {
   }
 
   socket.on('incoming', function (data) {
-
+    notifyMe();
     resetModal();
     taovang.incoming_data = {};
     var hideAfter = 500; //secs
@@ -72,5 +72,35 @@ $(function () {
     parent.find('form.call-history').toggle();
     parent.find('form.call-history textarea').focus();
   })
-})
+});
 
+  // get permission to run notifications
+  Notification.requestPermission().then(function(result) {
+    console.log(result)
+  });
+
+  function notifyMe() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("Trình duyệt này không hỗ trợ bật thông báo");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Hi there!");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Hi there!");
+      }
+    });
+  }
+
+  // Finally, if the user has denied notifications and you
+  // want to be respectful there is no need to bother them any more.
+}

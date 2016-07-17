@@ -12,4 +12,4 @@ StartDB
     -d mysql:latest
 
 Start Redis
-    docker run -d -p 6379:6379 -e REDIS_PASS="xXx" tutum/redis
+    docker run -d -p 6379:6379 -e REDIS_PASS="xXx" --name taovang-redis tutum/redis

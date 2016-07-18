@@ -41,7 +41,7 @@ module.exports = {
     phone = phone.replace(/\D/g,''); //Remove all keep only number, trim space also
 
     if(phone.match(/0[0-9]{9,11}/) == null){
-      return res.json(400, {"message": "phone is invalid");
+      return res.json(400, {"message": "phone is invalid"});
     }
 
     let findUserDone = new Promise((resolve, reject) => {

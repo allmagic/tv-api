@@ -10,8 +10,8 @@ module.exports = {
   datatable: function(req, res) {
 
     var tableDefinition = {
-      // sTableName: 'Calls',
-      sFromSql: "Calls LEFT JOIN User ON Calls.owner=User.phone",
+      // sTableName: 'calls',
+      sFromSql: "calls LEFT JOIN user ON calls.owner=user.phone",
       aSearchColumns: ['content','owner','staffNo', 'callID', 'name']
     };
 

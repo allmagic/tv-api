@@ -30,7 +30,7 @@ module.exports = {
 
     var tableDefinition = {
       // sTableName: 'Calls',
-      sTableName: 'User',
+      sTableName: 'user',
       sSelectSql: '*',
       aSearchColumns: ['avatar','name','customer_group','company','phone', 'email', 'address','birthday','facebook','zalo','viber','notes','createdAt',]
     };

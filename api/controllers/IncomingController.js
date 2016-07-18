@@ -35,13 +35,14 @@ module.exports = {
     if (Object.keys(params).length == 0) // Check params > 0
       return res.json(404, {"error": "please provide one or more params"});
 
+    params.sdtkh = params.sdtkh.replace(/\D/g,'');
     let phone = params.sdtkh;
 
-    //Clean phone param
+    //Clean phone param, dup with upper
     phone = phone.replace(/\D/g,''); //Remove all keep only number, trim space also
 
     if(phone.match(/0[0-9]{9,11}/) == null){
-      return res.json(400, {"message": "phone is invalid"});
+      return res.json(400, {"message": "phone is invalid, please check again"});
     }
 
     let findUserDone = new Promise((resolve, reject) => {

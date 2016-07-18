@@ -17,20 +17,20 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  models: {
-    connection: 'taovangSQL'
-  },
-
-  connections: {
-    taovangSQL: {
-      adapter: 'sails-mysql',
-      host: 'vnmagic.net',
-      port: 2307,
-      user: 'root', //optional
-      password: '', //optional
-      database: 'taovang_crm' //optional
-    },
-  }
+  // models: {
+  //   connection: 'taovangSQL'
+  // },
+  //
+  // connections: {
+  //   taovangSQL: {
+  //     adapter: 'sails-mysql',
+  //     host: 'vnmagic.net',
+  //     port: 2307,
+  //     user: 'root', //optional
+  //     password: '', //optional
+  //     database: 'taovang_crm' //optional
+  //   },
+  // }
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/

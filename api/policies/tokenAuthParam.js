@@ -12,9 +12,10 @@ module.exports = function(req, res, next) {
   // chuyen qua xai headers
   let INCOMING_TOKEN = process.env.INCOMING_TOKEN || "myVerySec";
 
-  if (typeof req.headers['x-token'] != 'undefined' && req.headers['x-token'] == INCOMING_TOKEN) {
+  let params = req.allParams(); //sao ko thay nhac' cc gi ca
+  if (typeof params.token != 'undefined' && params.token == INCOMING_TOKEN) {
     return next();
   }
 
-  return res.json(500, {"message":"You are not authorized, please add 'x-token' to header"});
+  return res.json(500, {"message":"You are not authorized, please add 'token' to param"});
 };

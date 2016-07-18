@@ -84,6 +84,8 @@ module.exports = {
 
       notifyData.users = users; //add users to notifyData
 
+      sails.log('notifyData', notifyData);
+
       sails.sockets.broadcast('logged', 'incoming', notifyData);// cho het nguoi trong room logged
 
       res.json(200, {"message": "notify success", users, totalClients});

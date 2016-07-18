@@ -38,7 +38,7 @@ module.exports.policies = {
     'login': true,
   },
 
-  'IncomingController' : 'tokenAuth',
+  'IncomingController' : 'tokenAuthParam',
   'UserController' : 'tokenAuth',
 
   /***************************************************************************

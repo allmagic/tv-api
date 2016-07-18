@@ -35,8 +35,13 @@ module.exports = {
     if (Object.keys(params).length == 0) // Check params > 0
       return res.json(404, {"error": "please provide one or more params"});
 
+    let phone = params.sdtkh;
+
+    //Clean phone param
+    phone = phone.replace(/\D/g,''); //Remove all keep only number, trim space also
+
     let findUserDone = new Promise((resolve, reject) => {
-      User.findOne({phone: params.sdtkh}).exec((err, users) => {
+      User.findOne({phone}).exec((err, users) => {
           if (err) {
             reject(err)
           }
@@ -51,7 +56,7 @@ module.exports = {
       if (!users) {
         // Create user if not and return user data to check by frontend JS
         let createUserDone = new Promise((resolve, reject) => {
-          User.create({phone: params.sdtkh}).exec((err, user) => {
+          User.create({phone}).exec((err, user) => {
             if (err) {
               sails.log('err', err);
               reject(err);

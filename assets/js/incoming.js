@@ -130,10 +130,12 @@ $(function () {
     // $("#audio4")[0].pause();
     // $("#audio4")[0].currentTime = 0;
   });
-  $('#incoming-modal').on('hiden.bs.modal', function(){
-    $("#audio4")[0].pause();
-    $("#audio4")[0].currentTime = 0;
-  });
+    $('#incoming-modal').on('hide.bs.modal',function(){
+      $("#audio4")[0].pause();
+      $("#audio4")[0].currentTime = 0;
+    });
+
+
   $('.save-call-history').click(function(event){
     console.log('save call click');
     var parent = $(this).parents('#incoming-modal');

@@ -104,21 +104,16 @@ $(function () {
     var options = {
       body: users.phone,
       icon: users.avatar,
-      sound: '/styles/img/notification.mp3'
-    }
-
-    /*
+      sound: '/styles/img/notification.mp3',
+      tag:'fix duplicate',
+    };
 
     var n = new Notification("Cuộc gọi đến! ( "+users.name+" )",options);
     n.onclick = function() {
-      $("#audio4")[0].pause();
       if(taovang.go_profile_url)
         window.open(taovang.go_profile_url)
     }
     setTimeout(n.close.bind(n), 8000);
-
-    */
-
 
 
     // Finally, if the user has denied notifications and you
@@ -127,8 +122,6 @@ $(function () {
 
   $('.close-modal').click(function() {
     $('#incoming-modal').modal('hide');
-    // $("#audio4")[0].pause();
-    // $("#audio4")[0].currentTime = 0;
   });
     $('#incoming-modal').on('hide.bs.modal',function(){
       $("#audio4")[0].pause();

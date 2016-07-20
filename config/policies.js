@@ -36,9 +36,10 @@ module.exports.policies = {
   'AccountController': {
     '*': true,
     'login': true,
+    'logout':false,
   },
 
-  'IncomingController' : 'tokenAuthParam',
+  'IncomingController' : 'notSessionAuth',
   'UserController' : 'tokenAuth',
 
   /***************************************************************************

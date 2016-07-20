@@ -26,6 +26,27 @@ module.exports = {
     concurrent();
   },
 
+  avatar : (req, res) => {
+    req.file('avatar').upload({
+      maxBytes: 10000000
+    },function whenDone(err, uploadedFiles) {
+      if (err) {
+        return res.negotiate(err);
+      };
+      if (uploadedFiles.length ===0){
+        return res.badRequest('No file was uploaded')
+      };
+      var userPhone = req.param('phone');
+      User.update({phone:userPhone},{avatar:uploadedFiles}).exec(function afteUpdate(err, updated){
+        if (err) {
+          console.log(err);
+        };
+        return res.ok(updated)
+
+      });
+    });
+  },
+
   datatable: function(req, res) {
 
     var tableDefinition = {

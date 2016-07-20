@@ -50,6 +50,7 @@ module.exports.routes = {
   '/user/list': {
     view: 'user/list'
   },
+  '/avatar/:phone': 'UserController.avatar',
 
 
   /***************************************************************************

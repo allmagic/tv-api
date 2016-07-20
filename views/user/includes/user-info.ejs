@@ -4,6 +4,9 @@
   <h1 userdata="name" class="no-border text-danger"><%= user.name || '' %></h1>
   <h5><span data-type="select" data-source="{'basic':'basic','gold':'gold','diamond':'diamond'}" userdata="customer_group"
             class="label label-danger"><%= user.customer_group || '' %></span></h5>
+  <form action="/upload" entype="multipart/form-data" method="post">
+    <input type="file" name="avatar" multiple="multiple"><input type="submit" value="Upload">
+  </form>
   <ul class="list-group">
     <li class="list-group-item"><span class="glyphicon glyphicon-earphone pull-left"></span>
       <span static-userdata="phone"><%= user.phone %></span></li>

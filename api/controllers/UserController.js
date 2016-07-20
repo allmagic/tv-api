@@ -27,16 +27,14 @@ module.exports = {
   },
 
   avatar : (req, res) => {
-    req.file('avatar').upload({
-      maxBytes: 10000000
-    },function whenDone(err, uploadedFiles) {
+    req.file('avatar').upload({maxBytes: 10000000},function whenDone(err, uploadedFiles) {
       if (err) {
         return res.negotiate(err);
       }
-
-      if (uploadedFiles.length ===0){
-        return res.badRequest('No file was uploaded')
-      }
+      return res.json('file uploaded',uploadedFiles);
+      // if (uploadedFiles.length ===0){
+      //   return res.badRequest('No file was uploaded')
+      // }
 
       // User.update(req.param('id'), {
       //   avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),

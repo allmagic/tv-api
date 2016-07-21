@@ -27,7 +27,6 @@ module.exports.policies = {
    ********************************************************************* ******/
 
 
-
   '*': 'sessionAuth',
   'LoginController': {
     '*': true,
@@ -36,11 +35,10 @@ module.exports.policies = {
   'AccountController': {
     '*': true,
     'login': true,
-    'logout':false,
+
   },
 
   'IncomingController' : 'notSessionAuth',
-  'UserController' : 'tokenAuth',
 
   /***************************************************************************
    *                                                                          *

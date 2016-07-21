@@ -51,6 +51,7 @@ module.exports.routes = {
     view: 'user/list'
   },
   '/upload': 'UserController.avatar',
+  '/new': { view:'user/new' },
 
 
   /***************************************************************************

@@ -75,7 +75,7 @@ module.exports = {
         var [users] = await Promise.all([createUserDone]);
       }
       let createCallDone = new Promise ((resolve,reject) => {
-        Calls.create({owner:params.sdtkh},{callid:params.callid}).exec((err,user) => {
+        Calls.create({'owner':params.sdtkh,'callID': params.callid }).exec((err,user) => {
           if (err) {
             sails.log('err',err);
             reject(err);

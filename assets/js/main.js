@@ -68,9 +68,6 @@ $(function() {
       { "width": "200px", "targets": 1 },
       { "width": "200px", "targets": 5 },
       { "width": "100px", "targets": [2,3,4,6] },
-
-
-
     ],
     "columns": [
       {
@@ -196,9 +193,7 @@ $(function() {
       }
     });
 
-  })
-
-
+  });
 
   showAddNoteModel = function(){
     $('#user-call-modal .alert').hide();//hide err

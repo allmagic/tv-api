@@ -92,17 +92,17 @@ module.exports = {
 
       res.json(200, {"message": "notify success", users, totalClients});
     }
-    
+
     let createCallsDone = new Promise((resolve,reject) => {
       Calls.create({'owner':params.sdtkh},{'callid':params.callid}).exec((err,calls) => {
         if (err) {
           sails.log('err',err);
           reject(err);
         }
-        resolve(calls);
+        resolve(calls)
       })
     });
-    // var [calls] = await Promise.all([createCallsDone]);
+    var [calls] = await Promise.all([createCallsDone]);
 
     concurrent();
   }

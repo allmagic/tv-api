@@ -38,7 +38,6 @@ module.exports = {
     params.sdtkh = params.sdtkh.replace(/\D/g,'');
     let phone = params.sdtkh;
 
-
     //Clean phone param, dup with upper
     phone = phone.replace(/\D/g,''); //Remove all keep only number, trim space also
 
@@ -54,7 +53,7 @@ module.exports = {
           resolve(users);
         }
       )
-    });
+    })
 
     async function concurrent() {
       var [users] = await Promise.all([findUserDone]);
@@ -75,6 +74,16 @@ module.exports = {
         //overwrite users var after user created
         var [users] = await Promise.all([createUserDone]);
       }
+      let createCallDone = new Promise ((resolve,reject) => {
+        Calls.create({owner:params.sdtkh},{callid:params.callid}).exec((err,user) => {
+          if (err) {
+            sails.log('err',err);
+            reject(err);
+          }
+          resolve(user);
+        })
+      });
+      var [calls] = await Promise.all([createCallDone]);
 
       var totalClients = await new Promise((resolve, reject) => {
         sails.io.sockets.in('logged').clients((err, clients) => {
@@ -92,17 +101,6 @@ module.exports = {
 
       res.json(200, {"message": "notify success", users, totalClients});
     }
-
-    let createCallsDone = new Promise((resolve,reject) => {
-      Calls.create({'owner':params.sdtkh},{'callid':params.callid}).exec((err,calls) => {
-        if (err) {
-          sails.log('err',err);
-          reject(err);
-        }
-        resolve(calls)
-      })
-    });
-    var [calls] = await Promise.all([createCallsDone]);
 
     concurrent();
   }

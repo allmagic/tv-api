@@ -9,18 +9,18 @@ module.exports = {
   attributes: {
     content: {
       type: 'string',
-      required: true
+
     },
     staffNo: {
       type: 'string',
-      required: true
+
     },
     SIPNo: {
       type: 'string'
     },
     callID: {
       type: 'string',
-      required: true
+      
     },
     timestamp: {
       type: 'datetime'

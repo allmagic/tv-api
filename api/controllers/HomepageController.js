@@ -7,6 +7,7 @@
 
 module.exports = {
   index: (req, res) => {
+
     // let sampleDate = (new Date()).toString();
     //
     // let data = {
@@ -23,6 +24,11 @@ module.exports = {
       }
       return res.view('homepage',{customers:customers});
     });
+    User.count().exec(function(err,found) {
+      console.log(found);
+      
+    });
+
   },
 
 }

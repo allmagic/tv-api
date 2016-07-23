@@ -8,6 +8,7 @@
 import QueryBuilder from 'datatable';
 
 module.exports = {
+
   profile: (req, res) => {
     let params = req.allParams();
     sails.log('params', params);

@@ -28,7 +28,7 @@ module.exports = {
 
     }).catch((err) => {
       res.json(500, {"message": err})
-    })
+    });
   },
 
   logout: (req, res) => {

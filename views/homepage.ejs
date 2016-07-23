@@ -1,34 +1,48 @@
+<h4>Trang Quản Trị<small> version: 1.0.1</small></h4><hr>
+<table id="user-home-table" class="display table table-hover" cellspacing="0" width="100%">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Khách Hàng</th>
+    <th>SDT</th>
+    <th>Nhân Viên</th>
+    <th>Nội dung</th>
+    <th>ID cuộc gọi</th>
+    <th>Ngày gọi</th>
+  </tr>
+  </thead>
+  <tfoot>
+  <tr>
+    <th>ID</th>
+    <th>Khách Hàng</th>
+    <th>SDT</th>
+    <th>Nhân Viên</th>
+    <th>Nội dung</th>
+    <th>ID cuộc gọi</th>
+    <th>Ngày gọi</th>
+  </tr>
+  </tfoot>
+</table><hr>
 
-<div class="col-sm-12">
-  <div class="col-sm-12">
-    <h2>Nhật Ký Tất Cả Cuộc Gọi</h2>
-    <table id="user-home-table" class="display table table-hover" cellspacing="0" width="100%">
-      <thead>
-      <tr>
-
-        <th>ID</th>
-        <th>Khách Hàng</th>
-        <th>SDT</th>
-        <th>Nhân Viên</th>
-        <th>Nội dung</th>
-        <th>ID cuộc gọi</th>
-        <th>Ngày gọi</th>
-
-
-      </tr>
-      </thead>
-      <tfoot>
-      <tr>
-
-        <th>ID</th>
-        <th>Khách Hàng</th>
-        <th>SDT</th>
-        <th>Nhân Viên</th>
-        <th>Nội dung</th>
-        <th>ID cuộc gọi</th>
-        <th>Ngày gọi</th>
-      </tr>
-      </tfoot>
-    </table>
+  <div class="row col-sm-7">
+    <ul class="list-group">
+      <li class="list-group-item"><h5>Khách Hàng Mới Nhất <span class="label label-success pull-right">có 8 khách hàng</span></h5></li>
+      <li class="list-group-item">
+        <div class="row text-center">
+          <% _.each(customers, function(customer) {%>
+          <div class="col-sm-3">
+            <a href="/profile/<%=customer.phone%>">
+            <img src="<%=customer.avatar%>" class="img-circle" height="80" width="80" alt="Avatar">
+            <p><%=customer.name%></p>
+          </div></a>
+          <% }) %>
+      </div>
+      </li>
+      <li class="list-group-item text-center"><a href="#">Xem Tất Cả</a></li>
+    </ul>
   </div>
-</div>
+  <div class="col-sm-4 sidenav">
+
+  </div>
+
+

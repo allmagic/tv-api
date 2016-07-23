@@ -45,7 +45,7 @@ $(function() {
   moment.locale('vi');
   $('form').validator()
 
-  $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-success';
+  $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-primary';
 
   function updateCallTimeByMoment(){
     $('#call-time').text(moment().format('DD/MM/YY, h:mm:ss a'));
@@ -87,8 +87,8 @@ $(function() {
     // order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 10, 25, 50],
-      [ '10 rows', '25 rows', '50 rows' ]
+      [ 5 , 25, 50, 100],
+      [ '5 rows', '25 rows', '50 rows', '100 rows']
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
@@ -112,8 +112,8 @@ $(function() {
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 10, 25, 50],
-      [ '10 rows', '25 rows', '50 rows' ]
+      [ 10 , 25, 50, 100],
+      [ '10 rows', '25 rows', '50 rows', '100 rows']
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
@@ -137,7 +137,7 @@ $(function() {
       },
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "content", "data": "content", "searchable": true},
-      {"name": "callID", "data": "callID", "searchable": true},
+      {"name": "callID", "data": "callID", "searchable": false,"visible": false},
       {"name": "createdAt", "data": "createdAt", "searchable": false},
 
 
@@ -145,8 +145,8 @@ $(function() {
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 10, 25, 50],
-      [ '10 rows', '25 rows', '50 rows' ]
+      [ 5 , 25, 50, 100],
+      [ '5 rows', '25 rows', '50 rows', '100 rows']
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ],
@@ -250,6 +250,8 @@ $(function() {
   socket.on('reconnect', function() {
     socket.get('/socket');
   });
+
+
   //
   // socket.on('user/created', (data) => {
   //   console.log("got event user created with data", data);

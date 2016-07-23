@@ -7,14 +7,22 @@
 
 module.exports = {
   index: (req, res) => {
-    let sampleDate = (new Date()).toString();
-    
-    let data = {
-      currentDate: sampleDate,
-      nhanVien: 'Khanh Admin',
-      testVariable: 'this is test value',
-    };
-    return res.view('homepage', data)
+    // let sampleDate = (new Date()).toString();
+    //
+    // let data = {
+    //   currentDate: sampleDate,
+    //   nhanVien: 'Khanh Admin',
+    //   testVariable: 'this is test value',
+    // };
+    // return res.view('homepage', data)
+    User.find({
+      name:{'!':'null'}
+    }).exec(function(err,customers) {
+      if (err) {
+        return res.serverError(err);
+      }
+      return res.view('homepage',{customers:customers});
+    });
   },
 
 }

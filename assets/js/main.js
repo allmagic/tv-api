@@ -228,7 +228,7 @@ $(function() {
     }).fail(function(xhr, status, error) {
       $('#user-call-modal .alert').text(xhr.responseJSON.message).show();//hide err
       // error handling
-    });;
+    });
 
 
   })

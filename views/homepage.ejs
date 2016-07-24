@@ -24,29 +24,6 @@
   </tfoot>
 </table><hr>
 
-  <div class="row col-md-4">
-    <div class="list-group">
-      <div class="list-group-item"><h5>Khách Hàng Mới Nhất <span class="label label-success pull-right">có 8 khách hàng</span></h5></div>
-
-      <div class="list-group-item">
-        <div class="row text-center">
-          <ul class="user-list">
-          <% _.each(customers, function(customer) {%>
-          <li class="user-item">
-            <a href="/profile/<%=customer.phone%>">
-            <img src="<%=customer.avatar%>" class="img-circle" height="80" width="80" alt="Avatar">
-            <p><%=customer.name%></p>
-          </a>
-          <% }) %>
-          </li>
-          </ul>
-      </div>
-      </div>
-      <li class="list-group-item text-center"><a href="./user/list">Xem Tất Cả</a></li>
-    </div>
-  </div>
-  <div class="col-sm-4 sidenav">
-
-  </div>
+<%- partial('user/recent') %>
 
 

@@ -1,0 +1,24 @@
+<div class="row col-md-5">
+  <div class="list-group">
+    <div class="list-group-item"><h5>Khách Hàng Mới Nhất</h5></div>
+
+    <div class="list-group-item">
+      <div class="row text-center">
+        <ul class="user-list">
+          <% _.each(customers, function(customer) {%>
+          <li class="user-item">
+            <a href="/profile/<%=customer.phone%>">
+              <img src="<%=customer.avatar%>" class="img-circle" alt="Avatar">
+              <p><%=customer.name%></p>
+            </a>
+            <% }) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <li class="list-group-item text-center"><a href="./user/list">Xem Tất Cả</a></li>
+  </div>
+</div>
+<div class="col-sm-4 sidenav">
+
+</div>

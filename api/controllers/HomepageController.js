@@ -10,6 +10,7 @@ module.exports = {
 
     User.count().exec(function(err,found) {
       console.log(found);
+      // return res.view('homepage',{found:found});
     });
 
     User.find({

@@ -23,8 +23,6 @@ module.exports = {
     },
     customer_group: {
       type: 'string',
-
-      // required: true
     },
     address: {
       type: 'string'
@@ -54,7 +52,6 @@ module.exports = {
     notes: {
       type: 'string'
     },
-
     // Add a reference to call
     calls: {
       collection: 'calls',

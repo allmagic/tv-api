@@ -16,19 +16,12 @@ module.exports = {
     // xong minh send 1 msg ve session do - coi vi du
     // sails.sockets.broadcast(req.signedCookies['sails.sid'], 'home/loaded', {});
 
-
     let session_id = req.signedCookies['sails.sid'];
     sails.sockets.join(req, session_id);
     sails.sockets.join(req, 'logged');
-
 
     sails.sockets.broadcast(session_id, 'user/authenticated', { message: `User authenticated and subscribed to logged & ${ session_id } room`, all_session_data: req.session});
   }
 };
 
-// OK chua :D // ok rồi mà ông làm tui lan man quá :D
-// Cu tu tu / sợ tau hoa nhập ma :))
-// hoc cham vl // cơm áo gạo tiền nữa pa -_- =D
-
-// thoi gio` design di :D
 

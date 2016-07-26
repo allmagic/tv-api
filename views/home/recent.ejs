@@ -1,0 +1,24 @@
+<div class="col-md-4">
+
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Khách Hàng Mới</h3>
+      <div class="box-tools pull-right">
+        <a href="/user/list" class="uppercase">
+        <span class="label label-success">XEM TẤT CẢ</span></a>
+      </div>
+    </div>
+
+    <div class="box-body no-padding">
+      <ul class="users-list clearfix">
+        <% _.each(customers, function(customer) {%>
+        <li>
+          <img src="<%=customer.avatar%>" alt="User Image">
+          <a class="users-list-name" href="/profile/<%=customer.phone%>"><%=customer.name%></a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+
+</div>

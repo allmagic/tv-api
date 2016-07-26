@@ -16,9 +16,7 @@ module.exports = {
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);
-
     var queryParams = req.allParams();
-
     var queries = queryBuilder.buildQuery(queryParams);
 
     async function concurrent() {
@@ -48,7 +46,6 @@ module.exports = {
         });
       })
 
-
       let [recordsTotalRes, selectRes] = await Promise.all([recordsTotal, select]);
 
       let results = {recordsTotal: recordsTotalRes, select: selectRes};
@@ -59,7 +56,6 @@ module.exports = {
 
       res.json(queryBuilder.parseResponse(results));
     }
-
     concurrent();
   }
 };

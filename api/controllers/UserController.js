@@ -21,9 +21,7 @@ module.exports = {
         return res.notFound("user not found");
 
       res.view('user/profile', {user});
-
     }
-
     concurrent();
   },
 
@@ -54,9 +52,7 @@ module.exports = {
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);
-
     var queryParams = req.allParams();
-
     var queries = queryBuilder.buildQuery(queryParams); //mai cuối tuần ông rãnh ah :D , h
 
     async function concurrent() {
@@ -86,7 +82,6 @@ module.exports = {
         });
       })
 
-
       let [recordsTotalRes, selectRes] = await Promise.all([recordsTotal, select]);
 
       let results = {recordsTotal: recordsTotalRes, select: selectRes};
@@ -94,10 +89,8 @@ module.exports = {
         let [recordsFilteredRes] = await Promise.all([recordsFiltered]);
         results.recordsFiltered = recordsFilteredRes;
       }
-
       res.json(queryBuilder.parseResponse(results));
     }
-
     concurrent();
   },
 };

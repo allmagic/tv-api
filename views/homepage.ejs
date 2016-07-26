@@ -1,29 +1,31 @@
-<h4>Trang Quản Trị<small> version: 1.0.1</small></h4>
-<table id="user-home-table" class="display table table-hover" cellspacing="0" width="100%">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Khách Hàng</th>
-    <th>SDT</th>
-    <th>Nhân Viên</th>
-    <th>Nội dung</th>
-    <th>ID cuộc gọi</th>
-    <th>Ngày gọi</th>
-  </tr>
-  </thead>
-  <tfoot>
-  <tr>
-    <th>ID</th>
-    <th>Khách Hàng</th>
-    <th>SDT</th>
-    <th>Nhân Viên</th>
-    <th>Nội dung</th>
-    <th>ID cuộc gọi</th>
-    <th>Ngày gọi</th>
-  </tr>
-  </tfoot>
-</table><hr>
+  <h4><%=name%><small> <%=version%></small></h4>
 
-<%- partial('user/recent') %>
+  <table id="user-home-table" class="display table table-hover" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Khách Hàng</th>
+      <th>SDT</th>
+      <th>Nhân Viên</th>
+      <th>Nội dung</th>
+      <th>ID cuộc gọi</th>
+      <th>Ngày gọi</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+      <th>ID</th>
+      <th>Khách Hàng</th>
+      <th>SDT</th>
+      <th>Nhân Viên</th>
+      <th>Nội dung</th>
+      <th>ID cuộc gọi</th>
+      <th>Ngày gọi</th>
+    </tr>
+    </tfoot>
+  </table><hr>
 
-
+  <div class="row">
+  <%- partial('home/recent') %>
+  <%- partial('home/moreinfo') %>
+  </div>

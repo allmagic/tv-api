@@ -9,33 +9,28 @@ module.exports = {
   attributes: {
     content: {
       type: 'string',
-
     },
     staffNo: {
       type: 'string',
-
     },
     SIPNo: {
       type: 'string'
     },
     callID: {
       type: 'string',
-      
+    },
+    like: {
+      type:'bolean',
     },
     timestamp: {
       type: 'datetime'
     },
 
-    // Add a reference to User
-    // owner la user id
     owner: {
       model: 'user',
       required: true
     },
-    // beforeCreate: function (attrs, cb) {
-    //   attrs.date = md5(attrs.password);
-    //   return cb();
-    // },
+    
   }
 };
 

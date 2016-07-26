@@ -8,26 +8,6 @@
  *
  */
 
-// vi du await cua es7
-// async function concurrent () {
-//   sails.log('run conn');
-//   let p1 = new Promise((resolve, reject) => {
-//     resolve("ahihi");
-//   })
-//   let p2 = new Promise((resolve, reject) => {
-//     resolve("ahihi2");
-//   })
-//
-//   let [r1] = await Promise.all([p1]);
-//   let [r2] = await Promise.all([p2]);
-//
-//   // wait de cho` va lay dc return cua 1 promise
-//   sails.log('r1', r1);
-//   sails.log('r2', r2);
-// }
-
-// concurrent();
-
 module.exports = {
   index: (req, res) => {
     var params = req.allParams(); //allParams la fn buildin
@@ -66,7 +46,6 @@ module.exports = {
               sails.log('err', err);
               reject(err);
             }
-
             resolve(user);
           })
         });

@@ -21,6 +21,7 @@ var cssFilesToInject = [
   // 'datatables/media/css/dataTables.bootstrap.min.css',
   'bootstrap/css/bootstrap-editable.css',
   'datatables/builder/*.css',
+  'lte/css/*.css'
 ];
 
 

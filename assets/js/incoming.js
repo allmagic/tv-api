@@ -4,7 +4,6 @@ $(function () {
 
 
   taovang.gcmKey = 'AIzaSyBCrUuU1aw4fV7KScJAFZTmRlaNVLshNz4';
-
   /*
 
    curl --header "Authorization: key=AIzaSyBCrUuU1aw4fV7KScJAFZTmRlaNVLshNz4" \
@@ -14,6 +13,7 @@ $(function () {
 
   * */
   // get permission to run notifications
+
   Notification.requestPermission().then(function(result) {
     console.log(result)
   });

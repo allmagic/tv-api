@@ -6,6 +6,7 @@ var contactTable;
 var user_phone;
 var call_query_action = 'add-call';
 
+// Render to show profile detail when click
 function format (d) {
   if(d.avatar == null) {
     d.avatar = '/images/default-avatar.png';
@@ -57,6 +58,8 @@ $(function() {
 
 
   user_phone = $(".user-info [static-userdata=phone]").text();
+
+  // Contacts table show - CONTACS PAGE
   contactTable = $('#user-contact-table').DataTable({
     "language": datatablesLang,
     "ajax": "/user/datatable",
@@ -87,13 +90,14 @@ $(function() {
     // order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 5 , 25, 50, 100],
-      [ '5 rows', '25 rows', '50 rows', '100 rows']
+      [ 10 , 25, 50, 100],
+      [ '10 rows', '25 rows', '50 rows', '100 rows']
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
-  //Call Table Show
+
+  // Calls Table Show - PROFILE PAGE
   callTable = $('#user-call-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/datatable",
@@ -118,9 +122,8 @@ $(function() {
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
-  //End Profile Call Table
 
-  //Home Table Show
+  // Calls Table Show - HOMEPAGE
   homeTable = $('#user-home-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/datatable",
@@ -152,7 +155,8 @@ $(function() {
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ],
 
   });
-  // End Home Table
+
+  // Click to show detail profile in contact page
   $('#user-contact-table tbody').on('click', 'td.details-control', function() {
 
     var tr = $(this).closest('tr');
@@ -162,7 +166,6 @@ $(function() {
       // This row is already open - close it
       row.child.hide("slow");
       tr.removeClass('shown');
-
     }
     else {
       // Open this row
@@ -209,6 +212,7 @@ $(function() {
     showAddNoteModel();
   });
 
+  // Click to save call - in profile page
   $('#save-call').click(function(){
     //AJAX to add call history here
     console.log('Call saved via AJAX');
@@ -233,6 +237,7 @@ $(function() {
 
   })
 
+
   socket = io.sails.connect();
   // test auth
   socket.get('/socket');
@@ -252,20 +257,10 @@ $(function() {
   });
 
 
-  //
-  // socket.on('user/created', (data) => {
-  //   console.log("got event user created with data", data);
-  // });
-  //
-  // socket.on('home/loaded', (data) => {
-  //   console.log("got event home/loaded with data", data);
-  // });
-
-
   path = path.replace(/\/$/, "");
   path = decodeURIComponent(path);
 
-  // Script to add active class on menu
+  // Script to add active class on main menu
   $(".nav li a").each(function() {
     var href = $(this).attr('href').trim();
     var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
@@ -280,7 +275,7 @@ $(function() {
     }
   });
 
-
+  // Login submit and recieve msg
   $('#login').submit(function(e) {
     console.log('form submit called');
     e.preventDefault();

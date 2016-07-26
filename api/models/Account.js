@@ -22,8 +22,14 @@ module.exports = {
       password: true,
       minLength: 6,
       required: true
-    }
+    },
+    comments: {
+      collection: 'comments',
+      via: 'acc',
+    },
   },
+  
+  // Check Login
   login: (email, password) => {
     // viet tat cua es6 neu key va value variable trong object giong ten nhau {username, password}
     return new Promise((resolve, reject) => {

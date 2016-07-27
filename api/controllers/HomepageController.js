@@ -22,6 +22,11 @@ module.exports = {
         data.callscount = callsfound;
       });
 
+    // find calls which is satisfy
+      Calls.count({vote:{'!':'null'}}).exec(function(err,votes) {
+        data.votecount = votes;
+      })
+
     // find 4 recent users with name is not null
       User.find({name:{'!':'null'},limit :4
       }).exec(function(err,customers) {
@@ -34,6 +39,7 @@ module.exports = {
           version:data.version,
           usercount:data.usercount,
           callscount:data.callscount,
+          votecount:data.votecount,
           customers:customers,
         });
       });

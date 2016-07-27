@@ -141,7 +141,7 @@ $(function() {
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "content", "data": "content", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": false,"visible": false},
-      {"name": "createdAt", "data": "createdAt", "searchable": false},
+      {"name": "createdAt", "data": "createdAt","class":"date", "searchable": false},
 
 
     ],
@@ -222,7 +222,8 @@ $(function() {
         "callID": taovang.query_call_id || 0, //9999 is null for required
         "SIPNo": taovang.query_sodtnv || '', //9999 is null for required
         "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
-        "owner": user_phone
+        "owner": user_phone,
+        "vote": $("input[type=radio]:checked").val(),
     }
 
     $.post( "/calls",postData, function( data ) {

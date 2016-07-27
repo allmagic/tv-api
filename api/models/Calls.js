@@ -19,8 +19,8 @@ module.exports = {
     callID: {
       type: 'string',
     },
-    like: {
-      type:'bolean',
+    vote: {
+      type:'string',
     },
     timestamp: {
       type: 'datetime'
@@ -30,7 +30,7 @@ module.exports = {
       model: 'user',
       required: true
     },
-    
+
   }
 };
 

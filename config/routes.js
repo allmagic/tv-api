@@ -32,28 +32,21 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  // Thich thi de~ comment
-  // Neu de syntax kieu key value nhu vay thi` xai controller de quan ly no la controller/HomepageController key index
+
   '/': 'HomepageController.index',
   '/home': 'HomepageController.index',
   '/about': 'AboutController.index',
-
-  // Neu de syntax kieu key nay thi khong xai controller qua thang~ view luon
-  '/pass': {
-    view: 'pass'
-  },
   '/incoming': 'IncomingController.index',
   '/socket': 'SocketController.index',
   '/login': 'LoginController.index',
   '/logout': 'AccountController.logout',
   '/profile/:phone': 'UserController.profile',
-  '/user/list': {
-    view: 'user/list'
-  },
-  '/upload': 'UserController.avatar',
+  '/timelines': 'PostsController.timelines',
+  '/upload' : {view: 'user/upload'},
+  '/user/list': {view: 'user/list'},
   '/new': { view:'user/new' },
-
-
+  '/pass': {view: 'pass'},
+  '/file/:phone':'UserController.upload',
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

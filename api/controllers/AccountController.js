@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+
 	login: (req, res) => {
     //Support socket only
     if (!req.isSocket) {return res.badRequest();}
@@ -33,9 +34,7 @@ module.exports = {
     req.session.destroy(function(err) {
       res.redirect('/home');
     });
-  }
-
-
+  },
 
 };
 

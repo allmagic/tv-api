@@ -1,5 +1,5 @@
 /**
- * Comments.js
+ * Posts.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,16 +9,16 @@ module.exports = {
 
   attributes: {
     content: {
-      type: 'string'
+      type: 'longtext'
     },
-    accID : {
-      type: 'number'
+    comments : {
+      collection: 'comments',
+      via: 'post'
     },
-    post: {
-      model: 'posts',
+    owner : {
+      model: 'account',
       required: true
     },
-
   }
 };
 

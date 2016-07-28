@@ -31,8 +31,7 @@ module.exports = {
       User.find({name:{'!':'null'},limit :4
       }).exec(function(err,customers) {
         if (err) { return res.serverError(err) }
-        data.foundcustomer = customers;
-
+        console.log('cust',customers);
     // show all result
         return res.view('homepage',{
           name:data.name,

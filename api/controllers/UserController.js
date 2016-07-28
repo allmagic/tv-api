@@ -25,20 +25,25 @@ module.exports = {
     concurrent();
   },
 
-  avatar : (req, res) => {
-    req.file('avatar').upload({maxBytes: 10000000},function whenDone(err, uploadedFiles) {
-      if (err) {
-        return res.negotiate(err);
-      }
-      return res.json('file uploaded',uploadedFiles);
-      // if (uploadedFiles.length ===0){
-      //   return res.badRequest('No file was uploaded')
-      // }
+  upload: (req, res) => {
+    let uploaded = {
+      msg:'ok',
+  };
+    if(req.method === 'GET')
+      return res.json({'status':'GET not allowed'});
 
-      // User.update(req.param('id'), {
-      //   avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
-      //   avatarFd: uploadedFiles[0].fd
-      // })
+    sails.log.debug('We have entered the uploading process ');
+    let params = req.allParams();
+    let phone = params.phone;
+    req.file('avatar').upload({dirname:'../../assets/images/avatar/'},function(err,files) {
+      if (err) return res.serverError(err);
+      let [file] = files;
+      uploaded.avatar = file;
+    });
+    console.log('msg :'+phone+','+uploaded.avatar+','+uploaded.msg);
+    User.update({phone},{avatar:uploaded.avatar}).exec(function(err,updated){
+      console.log('result',updated);
+      return res.redirect('homepage');
     });
   },
 

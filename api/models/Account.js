@@ -23,12 +23,18 @@ module.exports = {
       minLength: 6,
       required: true
     },
-    comments: {
-      collection: 'comments',
-      via: 'acc',
+    name: {
+      type: 'string'
+    },
+    avatar: {
+      type: 'string'
+    },
+    posts: {
+      collection: 'posts',
+      via: 'owner',
     },
   },
-  
+
   // Check Login
   login: (email, password) => {
     // viet tat cua es6 neu key va value variable trong object giong ten nhau {username, password}

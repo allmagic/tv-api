@@ -11,7 +11,6 @@ module.exports = {
 
   profile: (req, res) => {
     let params = req.allParams();
-    sails.log('params', params);
 
     async function concurrent() {
       let [user] = await Promise.all([User.getUserById(params.phone)]);
@@ -24,28 +23,7 @@ module.exports = {
     }
     concurrent();
   },
-
-  upload: (req, res) => {
-    let uploaded = {
-      msg:'ok',
-  };
-    if(req.method === 'GET')
-      return res.json({'status':'GET not allowed'});
-
-    sails.log.debug('We have entered the uploading process ');
-    let params = req.allParams();
-    let phone = params.phone;
-    req.file('avatar').upload({dirname:'../../assets/images/avatar/'},function(err,files) {
-      if (err) return res.serverError(err);
-      let [file] = files;
-      uploaded.avatar = file;
-    });
-    console.log('msg :'+phone+','+uploaded.avatar+','+uploaded.msg);
-    User.update({phone},{avatar:uploaded.avatar}).exec(function(err,updated){
-      console.log('result',updated);
-      return res.redirect('homepage');
-    });
-  },
+  
 
   datatable: function(req, res) {
 

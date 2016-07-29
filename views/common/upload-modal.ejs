@@ -1,0 +1,26 @@
+<div class="modal fade" id="avatar" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Hình ( <%= user.phone %> ) </h4>
+      </div>
+      <div class="modal-body">
+        <form id="uploadForm" class="form-inline" role="form"
+              enctype="multipart/form-data"
+              action="/files/<%= user.phone %>"
+              method="post" name="uploadForm" novalidate>
+          <input type="file" id="userPhotoInput" name="uploadFiles" id ="userPhoto" />
+
+          <input type="submit" value="Đồng Ý"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+
+  </div>
+</div>

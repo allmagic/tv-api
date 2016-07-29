@@ -13,7 +13,7 @@ module.exports = {
       // required: true
     },
     avatar: {
-      type: 'url'
+      type: 'string'
     },
     phone: {
       type: 'string',

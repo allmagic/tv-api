@@ -46,7 +46,7 @@ module.exports.routes = {
   '/user/list': {view: 'user/list'},
   '/new': { view:'user/new' },
   '/pass': {view: 'pass'},
-  '/file/:phone':'UserController.upload',
+  '/files/:phone':'FilesController.avatar',
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

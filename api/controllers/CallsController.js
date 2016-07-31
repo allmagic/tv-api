@@ -11,8 +11,9 @@ module.exports = {
 
     var tableDefinition = {
       // sTableName: 'calls',
+      sSelectSql: ['content','staffNo','SIPNo','callID','vote','owner','id','calls.createdAt','name'],
       sFromSql: "calls LEFT JOIN user ON calls.owner=user.phone",
-      aSearchColumns: ['content','owner','staffNo', 'callID', 'name']
+      aSearchColumns: ['content','owner','staffNo', 'callID', 'name','calls.createdAt','user.createdAt']
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);

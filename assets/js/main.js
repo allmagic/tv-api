@@ -65,9 +65,6 @@ $(function() {
       { "width": "200px", "targets": 1 },
       { "width": "200px", "targets": 5 },
       { "width": "100px", "targets": [2,3,4,6] },
-
-
-
     ],
     "columns": [
       {
@@ -82,7 +79,11 @@ $(function() {
       {"name": "phone", "data": "phone", "searchable": true},
       {"name": "address", "data": "address", "searchable": false},
       {"name": "birthday", "data": "birthday", "searchable": true},
-      {"name": "createdAt", "data": "createdAt", "searchable": true},
+      {"name": "createdAt", "data": "createdAt", "searchable": true,
+        "render": function (data,type,row) {
+          return $.timeago(data);
+        }
+      }
     ],
     // order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}], // phu hop voi so collums tren html
@@ -105,7 +106,11 @@ $(function() {
       {"name": "content", "data": "content", "searchable": true},
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": true},
-      {"name": "createdAt", "data": "createdAt", "searchable": false},
+      {"name": "createdAt", "data": "createdAt", "searchable": false,
+        "render": function (data,type,row) {
+          return $.timeago(data);
+        }
+      },
       {"name": "owner", "data": "owner", "searchable": true, "visible": false},
       {"name": "name", "data": "name", "searchable": true, "visible": false},
     ],
@@ -138,7 +143,11 @@ $(function() {
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "content", "data": "content", "searchable": true},
       {"name": "callID", "data": "callID", "searchable": true},
-      {"name": "createdAt", "data": "createdAt", "searchable": false},
+      {"name": "createdAt", "data": "createdAt", "searchable": false,
+        "render": function (data,type,row) {
+          return $.timeago(data);
+        }
+      }
 
 
     ],

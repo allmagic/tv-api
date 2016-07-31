@@ -6,11 +6,7 @@ var contactTable;
 var user_phone;
 var call_query_action = 'add-call';
 
-// Render to show profile detail when click
 function format (d) {
-  if(d.avatar == null) {
-    d.avatar = '/images/default-avatar.png';
-  };
   return  '<div class="container-fluid row-detail">'+
             '<div class="row">'+
               '<div class="col-sm-2 sidenav text-center">'+
@@ -46,7 +42,7 @@ $(function() {
   moment.locale('vi');
   $('form').validator()
 
-  $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-primary';
+  $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-success';
 
   function updateCallTimeByMoment(){
     $('#call-time').text(moment().format('DD/MM/YY, h:mm:ss a'));
@@ -58,8 +54,6 @@ $(function() {
 
 
   user_phone = $(".user-info [static-userdata=phone]").text();
-
-  // Contacts table show - CONTACS PAGE
   contactTable = $('#user-contact-table').DataTable({
     "language": datatablesLang,
     "ajax": "/user/datatable",
@@ -71,6 +65,9 @@ $(function() {
       { "width": "200px", "targets": 1 },
       { "width": "200px", "targets": 5 },
       { "width": "100px", "targets": [2,3,4,6] },
+
+
+
     ],
     "columns": [
       {
@@ -90,14 +87,13 @@ $(function() {
     // order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {}, {}, {}], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 10 , 25, 50, 100],
-      [ '10 rows', '25 rows', '50 rows', '100 rows']
+      [ 10, 25, 50],
+      [ '10 rows', '25 rows', '50 rows' ]
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
-
-  // Calls Table Show - PROFILE PAGE
+  //Call Table Show
   callTable = $('#user-call-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/datatable",
@@ -116,14 +112,15 @@ $(function() {
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 10 , 25, 50, 100],
-      [ '10 rows', '25 rows', '50 rows', '100 rows']
+      [ 10, 25, 50],
+      [ '10 rows', '25 rows', '50 rows' ]
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ]
   });
+  //End Profile Call Table
 
-  // Calls Table Show - HOMEPAGE
+  //Home Table Show
   homeTable = $('#user-home-table').DataTable({
     "language": datatablesLang,
     "ajax": "/calls/datatable",
@@ -140,23 +137,22 @@ $(function() {
       },
       {"name": "staffNo", "data": "staffNo", "searchable": true},
       {"name": "content", "data": "content", "searchable": true},
-      {"name": "callID", "data": "callID", "searchable": false,"visible": false},
-      {"name": "createdAt", "data": "createdAt","class":"date", "searchable": false},
+      {"name": "callID", "data": "callID", "searchable": true},
+      {"name": "createdAt", "data": "createdAt", "searchable": false},
 
 
     ],
     order:  [[ 0, 'desc' ]] , //desc ID
     "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
     lengthMenu: [
-      [ 5 , 25, 50, 100],
-      [ '5 rows', '25 rows', '50 rows', '100 rows']
+      [ 10, 25, 50],
+      [ '10 rows', '25 rows', '50 rows' ]
     ],
     dom: 'Bfrtip',
     buttons: ['pageLength', 'csv', 'excel', 'pdf', 'print' ],
 
   });
-
-  // Click to show detail profile in contact page
+  // End Home Table
   $('#user-contact-table tbody').on('click', 'td.details-control', function() {
 
     var tr = $(this).closest('tr');
@@ -166,6 +162,7 @@ $(function() {
       // This row is already open - close it
       row.child.hide("slow");
       tr.removeClass('shown');
+
     }
     else {
       // Open this row
@@ -196,7 +193,9 @@ $(function() {
       }
     });
 
-  });
+  })
+
+
 
   showAddNoteModel = function(){
     $('#user-call-modal .alert').hide();//hide err
@@ -212,7 +211,6 @@ $(function() {
     showAddNoteModel();
   });
 
-  // Click to save call - in profile page
   $('#save-call').click(function(){
     //AJAX to add call history here
     console.log('Call saved via AJAX');
@@ -222,8 +220,7 @@ $(function() {
         "callID": taovang.query_call_id || 0, //9999 is null for required
         "SIPNo": taovang.query_sodtnv || '', //9999 is null for required
         "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
-        "owner": user_phone,
-        "vote": $("input[type=radio]:checked").val(),
+        "owner": user_phone
     }
 
     $.post( "/calls",postData, function( data ) {
@@ -233,11 +230,10 @@ $(function() {
     }).fail(function(xhr, status, error) {
       $('#user-call-modal .alert').text(xhr.responseJSON.message).show();//hide err
       // error handling
-    });
+    });;
 
 
   })
-
 
   socket = io.sails.connect();
   // test auth
@@ -256,12 +252,20 @@ $(function() {
   socket.on('reconnect', function() {
     socket.get('/socket');
   });
+  //
+  // socket.on('user/created', (data) => {
+  //   console.log("got event user created with data", data);
+  // });
+  //
+  // socket.on('home/loaded', (data) => {
+  //   console.log("got event home/loaded with data", data);
+  // });
 
 
   path = path.replace(/\/$/, "");
   path = decodeURIComponent(path);
 
-  // Script to add active class on main menu
+  // Script to add active class on menu
   $(".nav li a").each(function() {
     var href = $(this).attr('href').trim();
     var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
@@ -276,7 +280,7 @@ $(function() {
     }
   });
 
-  // Login submit and recieve msg
+
   $('#login').submit(function(e) {
     console.log('form submit called');
     e.preventDefault();

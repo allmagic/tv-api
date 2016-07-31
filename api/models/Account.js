@@ -31,8 +31,8 @@ module.exports = {
     },
     posts: {
       collection: 'posts',
-      via: 'owner',
-    },
+      via: 'owner'
+    }
   },
 
   // Check Login
@@ -72,5 +72,5 @@ module.exports = {
   beforeCreate: function (attrs, cb) {
     attrs.password = md5(attrs.password);
     return cb();
-  },
+  }
 };

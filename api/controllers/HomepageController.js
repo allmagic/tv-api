@@ -9,7 +9,7 @@ module.exports = {
   index: (req, res) => {
     let data = {
       name:'Táo Vàng CRM',
-      version:'version: 1.0.1',
+      version:'version: 1.0.1'
     };
 
     // find total users
@@ -25,13 +25,13 @@ module.exports = {
     // find calls which is satisfy
       Calls.count({vote:{'!':'null'}}).exec(function(err,votes) {
         data.votecount = votes;
-      })
+      });
 
     // find 4 recent users with name is not null
       User.find({name:{'!':'null'},limit :4
       }).exec(function(err,customers) {
         if (err) { return res.serverError(err) }
-        console.log('cust',customers);
+        console.log('customers',customers);
     // show all result
         return res.view('homepage',{
           name:data.name,
@@ -39,12 +39,12 @@ module.exports = {
           usercount:data.usercount,
           callscount:data.callscount,
           votecount:data.votecount,
-          customers:customers,
+          customers:customers
         });
       });
 
-  },
-}
+  }
+};
 
 // let sampleDate = (new Date()).toString();
 //

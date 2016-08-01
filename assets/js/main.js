@@ -39,6 +39,11 @@ function format (d) {
 };
 
 $(function() {
+  
+  $(document).ready(function() {
+    $("time.timeago").timeago();
+  });
+
   moment.locale('vi');
   $('form').validator()
 

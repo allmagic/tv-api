@@ -23,7 +23,7 @@ module.exports = {
     }
     concurrent();
   },
-  
+
 
   datatable: function(req, res) {
 
@@ -31,7 +31,7 @@ module.exports = {
       // sTableName: 'Calls',
       sTableName: 'user',
       sSelectSql: '*',
-      aSearchColumns: ['avatar','name','customer_group','company','phone', 'email', 'address','birthday','facebook','zalo','viber','notes','createdAt',]
+      aSearchColumns: ['avatar','name','customer_group','company','phone', 'email', 'address','birthday','facebook','zalo','viber','notes','createdAt']
     };
 
     var queryBuilder = new QueryBuilder(tableDefinition);
@@ -55,7 +55,7 @@ module.exports = {
             reject(err);
           resolve(data);
         });
-      })
+      });
 
       let select = new Promise((resolve, reject) => {
         User.query(queries.select, (err, data) => {
@@ -63,7 +63,7 @@ module.exports = {
             reject(err);
           resolve(data);
         });
-      })
+      });
 
       let [recordsTotalRes, selectRes] = await Promise.all([recordsTotal, select]);
 
@@ -75,6 +75,6 @@ module.exports = {
       res.json(queryBuilder.parseResponse(results));
     }
     concurrent();
-  },
+  }
 };
 

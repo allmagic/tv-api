@@ -37,7 +37,7 @@ module.exports = {
             reject(err);
           resolve(data);
         });
-      })
+      });
 
       let select = new Promise((resolve, reject) => {
         Calls.query(queries.select, (err, data) => {
@@ -45,7 +45,7 @@ module.exports = {
             reject(err);
           resolve(data);
         });
-      })
+      });
 
       let [recordsTotalRes, selectRes] = await Promise.all([recordsTotal, select]);
 

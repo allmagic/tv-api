@@ -23,7 +23,7 @@ module.exports = {
       sails.sockets.broadcast(session_id, 'user/login-success', { message: "admin is login", all_session_data: req.session});
 
       delete result.password;
-      res.json(200, {"result": result});
+      res.json(200, {result});
 
     }).catch((err) => {
       res.json(500, {"message": err})
@@ -31,10 +31,10 @@ module.exports = {
   },
 
   logout: (req, res) => {
-    req.session.destroy(function(err) {
+    req.session.destroy(function() {
       res.redirect('/home');
     });
-  },
+  }
 
 };
 

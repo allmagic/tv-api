@@ -56,9 +56,10 @@
         <!-- sumay cai nay su bi sai het roi su là gì nhu bi sai-->
       <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">Trang Chủ</a></li>
-                <li><a href="/user/list">Danh Bạ</a></li>
-              <li><a href="/about">About</a></li>
+              <li class="active"><a href="/home">Trang Chủ</a></li>
+              <li><a href="/user/list">Danh Bạ</a></li>
+              <li><a href="/timelines">Timelines</a></li>
+              <li><a href="/about">Giới Thiệu</a></li>
 
             </ul>
 
@@ -68,14 +69,14 @@
             </ul>
             <% } else { %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Đăng Xuất</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
           </ul>
           <% } %>
       </div>
     </div>
   </nav>
 
-<div class="container-fluid">
+<div class="content">
     <%- body %>
 </div>
 

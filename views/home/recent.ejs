@@ -14,7 +14,7 @@
         <% _.each(customers, function(customer) {%>
         <li>
           <img src="<%=customer.avatar%>" alt="User Image">
-          <a class="users-list-name" href="/profile/<%=customer.phone%>"><%=customer.name%></a>
+          <a class="users-list-name" href="/profile/<%=customer.phone %>"><%=customer.name%></a>
         </li>
         <% }) %>
       </ul>

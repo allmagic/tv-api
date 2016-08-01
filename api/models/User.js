@@ -9,7 +9,7 @@ module.exports = {
   autoPK: false,
   attributes: {
     name: {
-      type: 'string',
+      type: 'string'
       // required: true
     },
     avatar: {
@@ -22,7 +22,7 @@ module.exports = {
       primaryKey: true
     },
     customer_group: {
-      type: 'string',
+      type: 'string'
     },
     address: {
       type: 'string'
@@ -56,7 +56,7 @@ module.exports = {
     calls: {
       collection: 'calls',
       via: 'owner'
-    },
+    }
     // e.g., "cm"
     // wingspanUnits: {
     //   type: 'string',
@@ -85,10 +85,10 @@ module.exports = {
     return new Promise((resolve, reject) => {
       User.findOne( phone ).exec((err, user) => {
         if(err)
-          reject(err)
+          reject(err);
         resolve(user)
       })
     })
-  },
+  }
 };
 

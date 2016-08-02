@@ -43,7 +43,7 @@ module.exports.routes = {
   '/profile/:phone': 'UserController.profile',
   '/timelines': 'PostsController.timelines',
   '/upload' : {view: 'user/upload'},
-  '/user/list': {view: 'user/list'},
+  '/contacts': {view: 'user/list'},
   '/new': { view:'user/new' },
   '/pass': {view: 'pass'},
   '/files/:phone':'FilesController.avatar'

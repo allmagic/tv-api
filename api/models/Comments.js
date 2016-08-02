@@ -11,13 +11,19 @@ module.exports = {
     content: {
       type: 'string'
     },
-    accID : {
+    accid : {
       type: 'number'
+    },
+    accname : {
+      type: 'string'
+    },
+    accavatar : {
+      type: 'string'
     },
     post: {
       model: 'posts',
       required: true
-    },
+    }
 
   }
 };

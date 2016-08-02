@@ -37,12 +37,20 @@ function format (d) {
           '</div>' +
     '</div>';
 };
+(function($){
 
-$(function() {
-  
-  $(document).ready(function() {
+  $(window).load(function() {
     $("time.timeago").timeago();
   });
+
+})(jQuery);
+
+
+
+$(function() {
+
+
+
 
   moment.locale('vi');
   $('form').validator()
@@ -280,7 +288,7 @@ $(function() {
   path = decodeURIComponent(path);
 
   // Script to add active class on menu
-  $(".nav li a").each(function() {
+  $(".navbar-left li a").each(function() {
     var href = $(this).attr('href').trim();
     var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
     currentURI = currentURI.replace(/^\//, "");
@@ -300,7 +308,31 @@ $(function() {
     e.preventDefault();
     var data = $('#login').serialize();
     socket.get('/account/login?' + data);
-  })
+  });
+
+  $('#form-comment').keydown(function(e) {
+    var comment = $("#type-comment").val();
+    var accid = $("#accid").val();
+    var accname = $("#accname").val();
+    var accavatar = $("#accavatar").val();
+      var key = e.which;
+      if (key == 13) {
+        $('#form-comment').submit();
+        socket.get('/posts/comment?content='+comment+'&post=1');
+      }
+  });
+
+  // $('#form-comment').submit(function(e) {
+  //   console.log('comment submited');
+  //   e.preventDefault();
+  //   var data = $('#form-comment').serialize();
+  //   alert("test"+data.);
+  //   socket.get('/posts/comment?' + data);
+  // });
+
+  // alert(accname+" có ID là: "+accid+" vừa bình luận với nội dung là: " +content);
+
+
 
   // Enable bootstrap tooltips
   $('[data-toggle="tooltip"]').tooltip();

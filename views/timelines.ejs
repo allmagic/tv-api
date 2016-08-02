@@ -1,33 +1,113 @@
-<div class="container-fluid row max9">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <h4><%=req.session.user.name%>'s Blog</h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Friends</a></li>
-        <li><a href="#">Family</a></li>
-        <li><a href="#">Photos</a></li>
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-    </div>
+<div class="content max9" style="min-height: 1126px;">
+  <!-- Content Header (Page header) -->
+  <!-- Main content -->
 
-    <div class="col-sm-9 whitebg timelines">
-      <h4><small>RECENT POSTS</small></h4>
-      <hr>
-      <% _.each(foundPosts, function(post) {%>
-      <h4><%=post.owner.email%></h4>
-      <span class="glyphicon glyphicon-time"></span>
-      <time class="timeago" datetime="<%=post.createdAt%>"></time>
-      <p><%=post.content%></p>
-      <hr>
-      <% }) %>
+    <div class="row">
+      <div class="col-md-4 hidden-xs">
+        <!-- Profile Image -->
+        <div class="box box-primary">
+          <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive img-circle" src="<%= req.session.user.avatar %>" alt="User profile picture">
+
+            <h3 class="profile-username text-center"><%=req.session.user.name%></h3>
+
+            <p class="text-muted text-center">Software Engineer</p>
+
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item">
+                <b>Followers</b> <a class="pull-right">1,322</a>
+              </li>
+              <li class="list-group-item">
+                <b>Following</b> <a class="pull-right">543</a>
+              </li>
+              <li class="list-group-item">
+                <b>Friends</b> <a class="pull-right">13,287</a>
+              </li>
+            </ul>
+
+            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-8 row">
+        <% _.each(foundPosts, function(post) {%>
+        <!-- Post -->
+        <div class="post">
+                <div class="user-block">
+                  <img class="img-circle img-bordered-sm" src="<%=post.owner.avatar%>" alt="user image">
+                        <span class="username">
+                          <a href="#"><%=post.owner.name%></a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                  <time class="timeago description" datetime="<%=post.createdAt%>"></time>
+                </div>
+                <!-- /.user-block -->
+                <p><%=post.content%></p>
+                <ul class="list-inline">
+                  <li><a href="#" class="link-black text-sm"><i class="glyphicon glyphicon-share-alt"></i> Chia sẻ</a></li>
+                  <li><a href="#" class="link-black text-sm"><i class="glyphicon glyphicon-thumbs-up"></i> Thích</a>
+                  </li>
+                  <li class="pull-right">
+                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Bình luận
+                      (5)</a></li>
+                </ul>
+        </div>
+        <div class="comment">
+          <% _.each(post.comments, function(comment) {%>
+          <div class="user-block">
+            <img class="img-rounded" src="<%=comment.accavatar%>" alt="user image">
+                        <span class="username">
+                          <a href="#"><%=comment.accname%></a> : <%=comment.content%>
+
+                        </span>
+            <span class="description">Like Share <%=comment.createdAt%></span><br>
+          </div>
+          <% }) %>
+          <div class="user-comment">
+            <img class="img-rounded" src="<%= req.session.user.avatar %>" alt="user image">
+            <form id="form-comment">
+              <input class="hidden" id="accname" type="name" value="<%= req.session.user.name %>">
+              <input class="hidden" id="accavatar" type="avatar" value="<%= req.session.user.avatar %>">
+              <input class="hidden" id="accid" type="accid" value="<%= req.session.user.id %>">
+            <input id="type-comment" class="form-control input-sm" type="text" placeholder="Type a comment">
+            </form>
+          </div>
+
+        </div>
+
+        <!-- /.post -->
+        <% }) %>
+
+
+
+
+        <!-- /.nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
     </div>
-  </div>
+    <!-- /.row -->
+
+
+
+  <!-- /.content -->
 </div>
+
+
+
+
+
+    <!--<div class="col-sm-9 whitebg timelines">-->
+      <!--<h4><small>RECENT POSTS</small></h4>-->
+      <!--<hr>-->
+      <!---->
+      <!--<h4></h4>-->
+      <!--<span class="glyphicon glyphicon-time"></span>-->
+      <!---->
+      <!--<p></p>-->
+      <!--<hr>-->
+      <!---->
+    <!--</div>-->
+

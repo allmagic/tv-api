@@ -12,7 +12,7 @@ module.exports = {
       type: 'string'
     },
     accid : {
-      type: 'number'
+      type: 'string'
     },
     accname : {
       type: 'string'
@@ -24,7 +24,6 @@ module.exports = {
       model: 'posts',
       required: true
     }
-
   }
 };
 

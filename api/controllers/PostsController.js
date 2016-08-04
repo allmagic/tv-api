@@ -15,15 +15,7 @@ module.exports = {
       return res.view('timelines',{foundPosts:foundPosts});
     });
 
-  },
-  comment: (req, res) => {
-    //Support socket only
-    if (req.isSocket) {return res.redirect("/home");}
-
-    let params = req.allParams();
-    console.log(params);
-    return res.json('comment ok');
-
   }
+
 };
 

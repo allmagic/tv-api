@@ -6,6 +6,22 @@
  */
 
 module.exports = {
-	
+  // create: (req, res) => {
+    // Support socket only
+    // if (!req.isSocket) {return res.badRequest();}
+
+    // let params = req.allParams();
+    // console.log(params);
+    // Comments.create({
+    //   content:params.content,
+    //   post:params.post,
+    //   accid:params.accid,
+    //   accname:params.accname,
+    //   accavatar:params.accavatar
+    // }).exec(function(err,commentData) {
+    //   if (err) { return res.serverError(err); }
+    //   return res.json(commentData)
+    // })
+  // }
 };
 

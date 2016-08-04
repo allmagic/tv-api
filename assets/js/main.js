@@ -262,7 +262,7 @@ $(function() {
   socket.get('/socket');
 
   socket.on('user/authenticated', function(data) {
-    console.log("got event user/authenticated", data);
+    console.log("got event user/dangnhap", data.all_session_data.user_id);
   });
 
   socket.on('user/login-success', function(data) {
@@ -274,6 +274,12 @@ $(function() {
   socket.on('reconnect', function() {
     socket.get('/socket');
   });
+
+  socket.on('/comments',function(resData) {
+    console.log('ok');
+  });
+
+
   //
   // socket.on('user/created', (data) => {
   //   console.log("got event user created with data", data);
@@ -310,27 +316,50 @@ $(function() {
     socket.get('/account/login?' + data);
   });
 
-  $('#form-comment').keydown(function(e) {
-    var comment = $("#type-comment").val();
-    var accid = $("#accid").val();
-    var accname = $("#accname").val();
-    var accavatar = $("#accavatar").val();
-      var key = e.which;
-      if (key == 13) {
-        $('#form-comment').submit();
-        socket.get('/posts/comment?content='+comment+'&post=1');
-      }
+
+
+
+  // $.fn.pressEnter = function(fn) {
+  //   return this.each(function() {
+  //     $(this).off('enterPress');
+  //     $(this).on('enterPress', fn);
+  //     $(this).keypress(function(e) {
+  //       if (e.keyCode == 13) {
+  //         $(this).trigger("enterPress");
+  //       }
+  //     });
+  //   });
+  // };
+
+  $('.form-cm').each(function() {
+    $(this).submit(function (e) {
+      e.preventDefault();
+      var cmData = $(this).serialize();
+      socket.post("/comments/create?"+cmData) ;
+
+      $(this).children(".input-sm").val("");
+    })
   });
 
-  // $('#form-comment').submit(function(e) {
-  //   console.log('comment submited');
-  //   e.preventDefault();
-  //   var data = $('#form-comment').serialize();
-  //   alert("test"+data.);
-  //   socket.get('/posts/comment?' + data);
-  // });
 
-  // alert(accname+" có ID là: "+accid+" vừa bình luận với nội dung là: " +content);
+  // $('.form-cm').each(function() {
+  //   $(this).submit(function (e) {
+  //     e.preventDefault();
+  //     //AJAX to add call history here
+  //     var cmData = {
+  //       'content': $('#content').val(),
+  //       'post': $('#postid').val(),
+  //       'accid': $('#accid').val(),
+  //       'accname': $('#accname').val(),
+  //       'accavatar': $('#accavatar').val()
+  //     };
+  //
+  //     socket.post("/comments", cmData, function (cmdata) {
+  //       console.log('comment saved done data', cmData);
+  //     });
+  //   })
+  //
+  // });
 
 
 
@@ -338,3 +367,24 @@ $(function() {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
+
+// Image Upload with preview
+function showMyImage(fileInput) {
+  var files = fileInput.files;
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+    var imageType = /image.*/;
+    if (!file.type.match(imageType)) {
+      continue;
+    }
+    var img=document.getElementById("thumbnail");
+    img.file = file;
+    var reader = new FileReader();
+    reader.onload = (function(aImg) {
+      return function(e) {
+        aImg.src = e.target.result;
+      };
+    })(img);
+    reader.readAsDataURL(file);
+  }
+}

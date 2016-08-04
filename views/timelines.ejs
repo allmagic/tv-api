@@ -68,11 +68,13 @@
           <% }) %>
           <div class="user-comment">
             <img class="img-rounded" src="<%= req.session.user.avatar %>" alt="user image">
-            <form id="form-comment">
-              <input class="hidden" id="accname" type="name" value="<%= req.session.user.name %>">
-              <input class="hidden" id="accavatar" type="avatar" value="<%= req.session.user.avatar %>">
-              <input class="hidden" id="accid" type="accid" value="<%= req.session.user.id %>">
-            <input id="type-comment" class="form-control input-sm" type="text" placeholder="Type a comment">
+            <form id="form-comment-<%= post.id %>" class="form-cm">
+              <input class="hidden" id="postid" name="post" type="name" value="<%= post.id %>">
+              <input class="hidden" id="accname" name="accname" type="name" value="<%= req.session.user.name %>">
+              <input class="hidden" id="accavatar" name="accavatar" type="avatar" value="<%= req.session.user.avatar %>">
+              <input class="hidden" id="accid" name="accid" type="accid" value="<%= req.session.user.id %>">
+              <input id="content" name="content" class="form-control input-sm" type="text" placeholder="Type a comment">
+              <input class="btn btn-danger hidden" type="submit" value="gửi"/>
             </form>
           </div>
 

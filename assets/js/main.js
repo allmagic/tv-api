@@ -36,35 +36,28 @@ function format (d) {
             '</div>' +
           '</div>' +
     '</div>';
-};
-(function($){
+}
 
+(function($){
   $(window).load(function() {
     $("time.timeago").timeago();
   });
-
 })(jQuery);
-
-
 
 $(function() {
 
-
-
-
   moment.locale('vi');
-  $('form').validator()
+  $('form').validator();
 
   $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-success';
 
   function updateCallTimeByMoment(){
     $('#call-time').text(moment().format('DD/MM/YY, h:mm:ss a'));
   }
-  updateCallTimeByMoment()
+  updateCallTimeByMoment();
   setInterval(function(){
     updateCallTimeByMoment()
   }, 1000);
-
 
   user_phone = $(".user-info [static-userdata=phone]").text();
   contactTable = $('#user-contact-table').DataTable({
@@ -125,10 +118,10 @@ $(function() {
         }
       },
       {"name": "owner", "data": "owner", "searchable": true, "visible": false},
-      {"name": "name", "data": "name", "searchable": true, "visible": false},
+      {"name": "name", "data": "name", "searchable": true, "visible": false}
     ],
     order:  [[ 0, 'desc' ]] , //desc ID
-    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone},], // phu hop voi so collums tren html
+    "searchCols": [{}, {}, {}, {}, {}, {"search": user_phone}], // phu hop voi so collums tren html
     lengthMenu: [
       [ 10, 25, 50],
       [ '10 rows', '25 rows', '50 rows' ]
@@ -215,9 +208,7 @@ $(function() {
       }
     });
 
-  })
-
-
+  });
 
   showAddNoteModel = function(){
     $('#user-call-modal .alert').hide();//hide err
@@ -243,7 +234,7 @@ $(function() {
         "SIPNo": taovang.query_sodtnv || '', //9999 is null for required
         "timestamp": moment().format('YYYY-MM-DD HH:mm:ss'),
         "owner": user_phone
-    }
+    };
 
     $.post( "/calls",postData, function( data ) {
       console.log('call saved done data', data);
@@ -253,8 +244,6 @@ $(function() {
       $('#user-call-modal .alert').text(xhr.responseJSON.message).show();//hide err
       // error handling
     });;
-
-
   })
 
   socket = io.sails.connect();
@@ -275,19 +264,6 @@ $(function() {
     socket.get('/socket');
   });
 
-
-
-
-  //
-  // socket.on('user/created', (data) => {
-  //   console.log("got event user created with data", data);
-  // });
-  //
-  // socket.on('home/loaded', (data) => {
-  //   console.log("got event home/loaded with data", data);
-  // });
-
-
   path = path.replace(/\/$/, "");
   path = decodeURIComponent(path);
 
@@ -297,8 +273,6 @@ $(function() {
     var currentURI = path.substring((path.lastIndexOf('/') + 1), path.length);
     currentURI = currentURI.replace(/^\//, "");
     href = href.replace(/^\//, "");
-    // console.log('currentURI', currentURI);
-    // console.log('href', href);
     if (currentURI === href) {
       $(this).closest('li').addClass('active');
     } else {
@@ -306,28 +280,12 @@ $(function() {
     }
   });
 
-
   $('#login').submit(function(e) {
     console.log('form submit called');
     e.preventDefault();
     var data = $('#login').serialize();
     socket.get('/account/login?' + data);
   });
-
-
-
-
-  // $.fn.pressEnter = function(fn) {
-  //   return this.each(function() {
-  //     $(this).off('enterPress');
-  //     $(this).on('enterPress', fn);
-  //     $(this).keypress(function(e) {
-  //       if (e.keyCode == 13) {
-  //         $(this).trigger("enterPress");
-  //       }
-  //     });
-  //   });
-  // };
 
 
   $(".form-cm").each(function() {
@@ -348,30 +306,6 @@ $(function() {
       '<span class="description">Like Share</span><br></div>');
 
   });
-
-
-
-
-  // $('.form-cm').each(function() {
-  //   $(this).submit(function (e) {
-  //     e.preventDefault();
-  //     //AJAX to add call history here
-  //     var cmData = {
-  //       'content': $('#content').val(),
-  //       'post': $('#postid').val(),
-  //       'accid': $('#accid').val(),
-  //       'accname': $('#accname').val(),
-  //       'accavatar': $('#accavatar').val()
-  //     };
-  //
-  //     socket.post("/comments", cmData, function (cmdata) {
-  //       console.log('comment saved done data', cmData);
-  //     });
-  //   })
-  //
-  // });
-
-
 
   // Enable bootstrap tooltips
   $('[data-toggle="tooltip"]').tooltip();

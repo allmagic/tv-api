@@ -19,32 +19,6 @@ $(function () {
     console.log(result)
   });
 
-
-    // // Let's check if the browser supports notifications
-    //
-    // if (!("Notification" in window)) {
-    //   alert("Trình duyệt này không hỗ trợ bật thông báo");
-    // }
-    //
-    // // Let's check whether notification permissions have already been granted
-    // else if (Notification.permission === "granted") {
-    //   // If it's okay let's create a notification
-    //   var notification = new Notification("Có điện thoại đến!",options);
-    // }
-    //
-    // // Otherwise, we need to ask the user for permission
-    // else if (Notification.permission !== 'denied') {
-    //   Notification.requestPermission(function (permission) {
-    //     // If the user accepts, let's create a notification
-    //     if (permission === "granted") {
-    //       var notification = new Notification("Hi there!");
-    //     }
-    //   });
-    // }
-    //
-    // // Finally, if the user has denied notifications and you
-    // // want to be respectful there is no need to bother them any more.
-
   function resetModal() {
     $('#incoming-modal .user-avatar').attr('src', '/images/default-avatar.png'); // 2
     var noInfo = 'Chưa có dữ liệu';
@@ -54,7 +28,6 @@ $(function () {
     $('#incoming-modal [userdata]').each(function (index, element) {
       $(element).text(noInfo);
     })
-
   }
 
   socket.on('incoming', function (data) {
@@ -105,31 +78,23 @@ $(function () {
       body: users.phone,
       icon: users.avatar,
       sound: '/styles/img/notification.mp3'
-    }
-
-    /*
-
+    };
     var n = new Notification("Cuộc gọi đến! ( "+users.name+" )",options);
     n.onclick = function() {
       $("#audio4")[0].pause();
       if(taovang.go_profile_url)
         window.open(taovang.go_profile_url)
-    }
+    };
     setTimeout(n.close.bind(n), 8000);
+    });
 
-    */
-
-
-
-    // Finally, if the user has denied notifications and you
-    // want to be respectful there is no need to bother them any more.
-  });
-
-  $('.close-modal').click(function() {
-    $('#incoming-modal').modal('hide');
-    $("#audio4")[0].pause();
-    $("#audio4")[0].currentTime = 0;
-  });
+    $('.close-modal').click(function() {
+      $("#incoming-modal").modal("hide");
+    });
+    $("#incoming-modal").on("hide.bs.modal",function(){
+      $("#audio4")[0].pause();
+      $("#audio4")[0].currentTime = 0;
+    });
 
   $('.save-call-history').click(function(event){
     console.log('save call click');
@@ -141,5 +106,3 @@ $(function () {
     parent.find('form.call-history textarea').focus();
   })
 });
-
-

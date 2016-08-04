@@ -33,6 +33,32 @@
       </div>
       <!-- /.col -->
       <div class="col-md-8 row">
+        <div class="list-group">
+          <div class="list-group-item">
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-camera"></span> Camera
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-picture"></span> Picture
+            </button>
+          </div>
+          <div class="list-group-item">
+            <div class="user-comment">
+              <img class="img-rounded" src="<%= req.session.user.avatar %>" alt="user image">
+              <form id="form-comment" class="form-cm">
+                <input class="hidden" id="postid" name="post" type="name" value="">
+                <input class="hidden" id="accname" name="accname" type="name" value="<%= req.session.user.name %>">
+                <input class="hidden" id="accavatar" name="accavatar" type="avatar" value="<%= req.session.user.avatar %>">
+                <input class="hidden" id="accid" name="accid" type="accid" value="<%= req.session.user.id %>">
+
+                <!--<input id="content" name="content" class="form-control input-sm" type="textarea" placeholder="Type a comment">-->
+                <textarea class="form-control input-sm" style="outline:none;box-shadow:none" rows="1" id="comment" placeholder="Viết bài mới"></textarea>
+                <input class="btn btn-danger hidden" type="submit" value="gửi"/>
+              </form>
+            </div>
+          </div>
+          <div class="list-group-item"><button type="button" class="btn btn-success">Post</button></div>
+        </div>
         <% _.each(foundPosts, function(post) {%>
         <!-- Post -->
         <div class="post">

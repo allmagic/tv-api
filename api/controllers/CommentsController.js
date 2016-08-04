@@ -6,22 +6,23 @@
  */
 
 module.exports = {
-  // create: (req, res) => {
-    // Support socket only
-    // if (!req.isSocket) {return res.badRequest();}
+  create: (req, res) => {
+    //Support socket only
+    if (!req.isSocket) {return res.badRequest();}
 
-    // let params = req.allParams();
-    // console.log(params);
-    // Comments.create({
-    //   content:params.content,
-    //   post:params.post,
-    //   accid:params.accid,
-    //   accname:params.accname,
-    //   accavatar:params.accavatar
-    // }).exec(function(err,commentData) {
-    //   if (err) { return res.serverError(err); }
-    //   return res.json(commentData)
-    // })
-  // }
+    let params = req.allParams();
+    console.log(params);
+    sails.sockets.blast('comment_ok', { message: "comment success", comment_data: params});
+    Comments.create({
+      content:params.content,
+      post:params.post,
+      accid:params.accid,
+      accname:params.accname,
+      accavatar:params.accavatar
+    }).exec(function(err) {
+      if (err) { return res.serverError(err); }
+      return res.ok()
+    })
+  }
 };
 

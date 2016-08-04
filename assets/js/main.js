@@ -275,9 +275,7 @@ $(function() {
     socket.get('/socket');
   });
 
-  socket.on('/comments',function(resData) {
-    console.log('ok');
-  });
+
 
 
   //
@@ -331,15 +329,27 @@ $(function() {
   //   });
   // };
 
-  $('.form-cm').each(function() {
+
+  $(".form-cm").each(function() {
     $(this).submit(function (e) {
       e.preventDefault();
       var cmData = $(this).serialize();
       socket.post("/comments/create?"+cmData) ;
-
       $(this).children(".input-sm").val("");
-    })
+    });
   });
+
+  socket.on('comment_ok',function(resData) {
+    console.log('comment data',resData);
+    $("#postid-"+resData.comment_data.post).append('<div class="user-block">' +
+      '<img class="img-rounded" src="'+resData.comment_data.accavatar+'" alt="user image">' +
+      '<span class="username">' +
+      '<a href="'+resData.comment_data.accid+'">'+resData.comment_data.accname+'</a> : '+resData.comment_data.content+'</span>' +
+      '<span class="description">Like Share</span><br></div>');
+
+  });
+
+
 
 
   // $('.form-cm').each(function() {

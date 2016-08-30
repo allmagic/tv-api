@@ -33,7 +33,7 @@ var jsFilesToInject = [
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
   'plugins/jQuery/*.js',
-  'bootstrap/js/bootstrap.min.js',
+
   'datatables/builder/*.js',
   // 'datatables/media/js/jquery.dataTables.min.js',
   // 'datatables/media/js/dataTables.bootstrap.min.js',
@@ -45,7 +45,7 @@ var jsFilesToInject = [
   // will be injected here in no particular order.
   'js/main.js',
   'js/**/*.js',
-
+  'bootstrap/js/bootstrap.min.js'
 ];
 
 
